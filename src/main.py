@@ -5,6 +5,7 @@ Uses Tkinter for GUI.
 """
 
 import os
+import random
 from tkinter import *
 from enum import Enum
 from queue import PriorityQueue
@@ -18,8 +19,9 @@ num_cell_connections = 0  # Number of connections to be routed, summed across al
 grid_width = 0  # Width of the placement grid
 grid_height = 0  # Height of the placement grid
 cell_dict = {}  # Dictionary of all cells, key is cell ID
-net_dict = {}  # Dictionary of all nets, ket is net ID
-placement_grid = None
+net_dict = {}  # Dictionary of all nets, key is net ID
+placement_grid = []
+cell_queue = []
 
 
 class Site:
@@ -30,6 +32,9 @@ class Site:
         self.x = x
         self.y = y
         self.canvas_id = -1  # ID of corresponding rectangle in Tkinter canvas
+        self.canvas_centre = (-1, -1)
+        self.isOccupied = False
+        self.occupant = None
         pass
 
 
@@ -39,7 +44,19 @@ class Cell:
     """
     def __init__(self, cell_id):
         self.id = cell_id
+        self.isPlaced = False
+        self.site = None
         pass
+
+
+class Line:
+    """
+    A wrapper class for Tkinter lines
+    """
+    def __init__(self, source:Cell, sink:Cell, canvas_id:int):
+        self.source = source
+        self.sink = sink
+        self.canvas_id = canvas_id
 
 
 class Net:
@@ -51,6 +68,7 @@ class Net:
         self.num_cells = num_cells
         self.source = None
         self.sinks = []
+        self.lines = []
         pass
 
 
@@ -66,13 +84,15 @@ def main():
     global grid_height
     global placement_grid
 
+    random.seed(0)  # Set random seed
+
     # Read input file
     script_path = os.path.dirname(__file__)
     true_path = os.path.join(script_path, FILE_PATH)
     routing_file = open(true_path, "r")
 
     # Setup the routing grid/array
-    create_placement_grid(routing_file)
+    placement_grid = create_placement_grid(routing_file)
 
     # Create routing canvas in Tkinter
     root = Tk()
@@ -90,12 +110,94 @@ def main():
             bottom_right_y = top_left_y + site_length
             rectangle_colour = "blue"
             rectangle_coords = (top_left_x, top_left_y, bottom_right_x, bottom_right_y)
-            (placement_grid[x][y]).canvas_id = routing_canvas.create_rectangle(rectangle_coords, fill=rectangle_colour)
+            site = placement_grid[x][y]
+            site.canvas_id = routing_canvas.create_rectangle(rectangle_coords, fill=rectangle_colour)
+            site.canvas_centre = ((top_left_x+bottom_right_x)/2, (top_left_y+bottom_right_y)/2)
+
+    # Perform initial placement
+    initial_placement(routing_canvas)
 
     # Event bindings and Tkinter start
     routing_canvas.focus_set()
     routing_canvas.bind("<Key>", lambda event: key_handler(routing_canvas, event))
     root.mainloop()
+
+
+def initial_placement(routing_canvas):
+    """
+    Perform an initial placement prior to SA
+    :param routing_canvas: Tkinter canvas
+    """
+    global placement_grid
+
+    # Check if there are enough sites for the requisite number of cells
+    if num_cells_to_place > (grid_width*grid_height):
+        print("ERROR: Not enough space to place this circuit!")
+        exit()
+
+    free_sites = []
+    for x in range(grid_width):
+        for y in range(grid_height):
+            free_sites.append((x, y))
+    random.shuffle(free_sites)
+
+    for net in net_dict.values():
+        # Place the net's source
+        place_x, place_y = free_sites.pop()
+        placement_site = placement_grid[place_y][place_x]
+        placement_site.occupant = net.source
+        net.source.site = placement_site
+        placement_site.isOccupied = True
+        net.source.isPlaced = True
+
+        # Place the net's sinks
+        for sink in net.sinks:
+            place_x, place_y = free_sites.pop()
+            placement_site = placement_grid[place_y][place_x]
+            placement_site.occupant = sink
+            sink.site = placement_site
+            placement_site.isOccupied = True
+            sink.isPlaced = True
+
+        # Draw net on canvas
+        draw_net(routing_canvas, net)
+
+
+def draw_net(routing_canvas, net):
+    """
+    Draw a net on the canvas from scratch
+    """
+
+    # Check that net is fully placed
+    if not net.source.isPlaced:
+        return
+    for sink in net.sinks:
+        if not sink.isPlaced:
+            return
+
+    # Draw line between cells
+    for sink in net.sinks:
+        line_id = draw_line(routing_canvas, net.source, sink)
+        new_line = Line(net.source, sink, line_id)
+        net.lines.append(new_line)
+
+
+def draw_line(routing_canvas, source: Cell, sink: Cell):
+    """
+    Draws a line between two placed cells
+    """
+
+    # Get line coordinates
+    source_centre = source.site.canvas_centre
+    source_x = source_centre[0]
+    source_y = source_centre[1]
+    sink_centre = sink.site.canvas_centre
+    sink_x = sink_centre[0]
+    sink_y = sink_centre[1]
+
+    line_id = routing_canvas.create_line(source_x, source_y, sink_x, sink_y, fill='red', width=1)
+
+    return line_id
 
 
 def key_handler(routing_canvas, event):
@@ -203,7 +305,6 @@ def create_placement_grid(routing_file) -> list[list[Site]]:
             new_net_id += -1
             continue
 
-        print(net_tokens)
         num_cells_in_net = int(net_tokens[0])
 
         # Create new net
