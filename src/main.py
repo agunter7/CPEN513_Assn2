@@ -7,6 +7,7 @@ Uses Tkinter for GUI.
 import os
 import random
 from tkinter import *
+from math import exp
 from enum import Enum
 from queue import PriorityQueue
 
@@ -22,6 +23,12 @@ cell_dict = {}  # Dictionary of all cells, key is cell ID
 net_dict = {}  # Dictionary of all nets, key is net ID
 placement_grid = []
 cell_queue = []
+placement_done = False  # Is the placement complete?
+# Simulated Annealing variables
+sa_temp = -1  # SA Temperature
+iters_per_temp = -1  # Number of moves to perform at each temperature
+iters_this_temp = 0  # Number of moves performed at the current temperature
+current_cost = 0  # The estimated cost of the current placement
 
 
 class Site:
@@ -46,6 +53,7 @@ class Cell:
         self.id = cell_id
         self.isPlaced = False
         self.site = None
+        self.nets = []  # Nets this cell is a part of
         pass
 
 
@@ -53,7 +61,7 @@ class Line:
     """
     A wrapper class for Tkinter lines
     """
-    def __init__(self, source:Cell, sink:Cell, canvas_id:int):
+    def __init__(self, source: Cell, sink: Cell, canvas_id: int):
         self.source = source
         self.sink = sink
         self.canvas_id = canvas_id
@@ -129,6 +137,7 @@ def initial_placement(routing_canvas):
     :param routing_canvas: Tkinter canvas
     """
     global placement_grid
+    global current_cost
 
     # Check if there are enough sites for the requisite number of cells
     if num_cells_to_place > (grid_width*grid_height):
@@ -161,6 +170,9 @@ def initial_placement(routing_canvas):
 
         # Draw net on canvas
         draw_net(routing_canvas, net)
+
+    # Calculate an initial cost estimate for the circuit
+    current_cost = calculate_total_cost()
 
 
 def draw_net(routing_canvas, net):
@@ -214,14 +226,14 @@ def key_handler(routing_canvas, event):
     elif e_char == 'd':
         pass
     elif e_char == '0':
-        algorithm_to_completion(routing_canvas)
+        sa_to_completion(routing_canvas)
     elif str.isdigit(e_char):
-        algorithm_multistep(routing_canvas, int(e_char))
+        sa_multistep(routing_canvas, int(e_char))
     else:
         pass
 
 
-def algorithm_to_completion(routing_canvas):
+def sa_to_completion(routing_canvas):
     """
     Execute Simulated Annealing to completion.
     :param routing_canvas: Tkinter canvas
@@ -231,7 +243,7 @@ def algorithm_to_completion(routing_canvas):
     pass
 
 
-def algorithm_multistep(routing_canvas, n):
+def sa_multistep(routing_canvas, n):
     """
     Perform multiple iterations of SA
     :param routing_canvas: Tkinter canvas
@@ -239,6 +251,115 @@ def algorithm_multistep(routing_canvas, n):
     :return: void
     """
     pass
+
+
+def sa_step(routing_canvas):
+    """
+    Perform a single iteration of SA
+    :param routing_canvas: Tkinter canvas
+    :return: void
+    """
+    if placement_done:
+        return
+
+    # Choose two cells randomly
+    cell_a, cell_b = pick_random_cell_pair()
+
+    # Calculate theoretical delta
+    delta = get_swap_delta(cell_a, cell_b)
+
+    # Generate random decision boundary
+    decision_value = random.random()
+    decision_boundary = exp(-1*delta/sa_temp)
+
+    # Check if move will be taken
+    if decision_value < decision_boundary:
+        swap(routing_canvas, cell_a, cell_b)
+
+
+def swap(routing_canvas, cell_a: Cell, cell_b: Cell):
+    # Delete lines connecting the cell pair
+
+    # Swap the cells
+
+    # Update total cost
+
+    # Redraw lines
+
+    pass
+
+
+def get_swap_delta(cell_a: Cell, cell_b: Cell):
+    # Get the initial cost sum of all nets the target cells are found in
+    starting_cost = 0
+    unique_net_list = []  # cell_a and cell_b could share nets, need to avoid double entries
+    for net_a in cell_a.nets:
+        unique_net_list.append(net_a)
+    for net_b in cell_b.nets:
+        if net_b not in unique_net_list:
+            unique_net_list.append(net_b)
+    for unique_net in unique_net_list:
+        starting_cost += hpwl(unique_net)
+
+    # Perform a temporary swap
+    temp_site = cell_b.site
+    cell_b.site = cell_a.site
+    cell_a.site = temp_site
+    # Calculate new cost
+    final_cost = 0
+    for unique_net in unique_net_list:
+        final_cost += hpwl(unique_net)
+
+    # Reverse the temporary swap
+    cell_a.site = cell_b.site
+    cell_b.site = temp_site
+
+    return final_cost - starting_cost
+
+
+def hpwl(net: Net):
+    """
+    Calculate the Half-Perimeter Wire Length of a net
+    :param net: Net to calculate HPWL for
+    :return: int - HPWL
+    """
+    # Find net's bounding box
+    source = net.source
+    leftmost_x = source.site.x
+    rightmost_x = leftmost_x
+    lowest_y = source.site.y
+    highest_y = lowest_y
+    for sink in net.sinks:
+        sink_site = sink.site
+        site_x = sink_site.x
+        site_y = sink_site.y
+        if site_x < leftmost_x:
+            leftmost_x = site_x
+        elif site_x > rightmost_x:
+            rightmost_x = site_x
+        if site_y > lowest_y:  # Recall that y values increase going "down" the grid
+            lowest_y = site_y
+        elif site_y < highest_y:
+            highest_y = site_y
+
+    # Calculate HPWL from bounding box
+    return (rightmost_x-leftmost_x) + (lowest_y-highest_y)
+
+
+def pick_random_cell_pair():
+    """
+    Pick a random pair of cells
+    :return: Cell 2-tuple
+    """
+    cell_a_idx = random.randrange(num_cells_to_place)
+    cell_b_idx = random.randrange(num_cells_to_place)
+
+    if cell_a_idx != cell_b_idx:
+        cell_a = cell_dict[cell_a_idx]
+        cell_b = cell_dict[cell_b_idx]
+        return cell_a, cell_b
+    else:
+        return pick_random_cell_pair()
 
 
 def add_text(routing_canvas: Canvas, cell: Cell) -> int:
@@ -313,12 +434,28 @@ def create_placement_grid(routing_file) -> list[list[Site]]:
 
         # Add cells to net
         source_id = int(net_tokens[1])  # Add source cell first
-        new_net.source = cell_dict[source_id]
+        source_cell = cell_dict[source_id]
+        new_net.source = source_cell
+        source_cell.nets.append(new_net)
         for sink_idx in range(2, num_cells_in_net):
             sink_id = int(net_tokens[sink_idx])
-            new_net.sinks.append(cell_dict[sink_id])
+            sink_cell = cell_dict[sink_id]
+            new_net.sinks.append(sink_cell)
+            sink_cell.nets.append(new_net)
 
     return placement_grid
+
+
+def calculate_total_cost():
+    """
+    Calculate, from scratch, the total estimated cost of the circuit as currently placed.
+    Estimation done with HPWL
+    :return: int - HPWL cost for all nets
+    """
+    total_cost = 0
+    for net in net_dict.values():
+        total_cost += hpwl(net)
+    return total_cost
 
 
 if __name__ == "__main__":
