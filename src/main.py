@@ -110,7 +110,7 @@ def main():
             bottom_right_y = top_left_y + site_length
             rectangle_colour = "blue"
             rectangle_coords = (top_left_x, top_left_y, bottom_right_x, bottom_right_y)
-            site = placement_grid[x][y]
+            site = placement_grid[y][x]
             site.canvas_id = routing_canvas.create_rectangle(rectangle_coords, fill=rectangle_colour)
             site.canvas_centre = ((top_left_x+bottom_right_x)/2, (top_left_y+bottom_right_y)/2)
 
@@ -283,11 +283,11 @@ def create_placement_grid(routing_file) -> list[list[Site]]:
     grid_width = int(grid_line.split(' ')[3])
     placement_grid = []
     # Create grid in column-major order
-    for _ in range(grid_width):
+    for _ in range(grid_height):
         placement_grid.append([])
     # Populate grid with sites
     for cell_x, column in enumerate(placement_grid):
-        for cell_y in range(grid_height):
+        for cell_y in range(grid_width):
             column.append(Site(x=cell_x, y=cell_y))
 
     # Keep a cell dictionary
