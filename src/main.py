@@ -212,6 +212,15 @@ def draw_line(routing_canvas, source: Cell, sink: Cell):
     return line_id
 
 
+def redraw_line(routing_canvas, line: Line):
+    source_centre = line.source.site.canvas_centre
+    source_x = source_centre[0]
+    source_y = source_centre[1]
+    sink_centre = line.sink.site.canvas_centre
+    sink_x = sink_centre[0]
+    sink_y = sink_centre[1]
+    routing_canvas.coords(line.canvas_id, source_x, source_y, sink_x, sink_y)
+
 def key_handler(routing_canvas, event):
     """
     Accepts a key event and makes an appropriate decision.
@@ -274,19 +283,31 @@ def sa_step(routing_canvas):
 
     # Check if move will be taken
     if decision_value < decision_boundary:
-        swap(routing_canvas, cell_a, cell_b)
+        swap(routing_canvas, cell_a, cell_b, delta)
 
 
-def swap(routing_canvas, cell_a: Cell, cell_b: Cell):
-    # Delete lines connecting the cell pair
+def swap(routing_canvas, cell_a: Cell, cell_b: Cell, delta: int):
+    global current_cost
 
     # Swap the cells
+    temp_site = cell_a.site
+    cell_a.site = cell_b.site
+    cell_b.site = temp_site
+
+    # Delete lines connecting the cell pair
+    for net_a in cell_a.nets:
+        for line in net_a:
+            if line.source is cell_a or line.sink is cell_a:
+                redraw_line(routing_canvas, line)
+
+                pass
+    for net_b in cell_b.nets:
+        for line in net_b:
+            if line.source is cell_b or line.sink is cell_b:
+                redraw_line(routing_canvas, line)
 
     # Update total cost
-
-    # Redraw lines
-
-    pass
+    current_cost += delta
 
 
 def get_swap_delta(cell_a: Cell, cell_b: Cell):
