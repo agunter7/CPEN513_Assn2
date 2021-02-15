@@ -7,12 +7,13 @@ Uses Tkinter for GUI.
 import os
 import random
 from tkinter import *
-from math import exp
-from enum import Enum
-from queue import PriorityQueue
+from math import exp, sqrt
 
 # Constants
 FILE_PATH = "../benchmarks/cm151a.txt"  # Path to the file with info about the circuit to place
+COOLING_FACTOR = 0.9
+INITIAL_TEMP_COEFFICIENT = 50
+
 
 # Global variables
 num_cells_to_place = 0  # Number of cells in the circuit to be placed
@@ -25,9 +26,11 @@ placement_grid = []
 cell_queue = []
 placement_done = False  # Is the placement complete?
 # Simulated Annealing variables
-sa_temp = -1  # SA Temperature
-iters_per_temp = -1  # Number of moves to perform at each temperature
-iters_this_temp = 0  # Number of moves performed at the current temperature
+sa_temp = -1  # SA temperature
+sa_initial_temp = -1  # Starting SA temperature
+iters_per_temp = -1  # Number of iterations to perform at each temperature
+iters_this_temp = 0  # Number of iterations performed at the current temperature
+accepted_moves_this_temp = 0  # Number of moves accepted at the current temperature
 current_cost = 0  # The estimated cost of the current placement
 
 
@@ -138,6 +141,11 @@ def initial_placement(routing_canvas):
     """
     global placement_grid
     global current_cost
+    global sa_temp
+    global INITIAL_TEMP_COEFFICIENT
+    global num_cells_to_place
+    global iters_per_temp
+    global sa_initial_temp
 
     # Check if there are enough sites for the requisite number of cells
     if num_cells_to_place > (grid_width*grid_height):
@@ -171,8 +179,25 @@ def initial_placement(routing_canvas):
         # Draw net on canvas
         draw_net(routing_canvas, net)
 
-    # Calculate an initial cost estimate for the circuit
     current_cost = calculate_total_cost()
+    # Set the initial annealing temperature as 20*std_dev of cost of 50 swaps
+    initial_cost_list = []
+    for _ in range(50):
+        cell_a, cell_b = pick_random_cell_pair()
+        initial_cost_list.append(get_swap_delta(cell_a, cell_b))
+    sample_cost_sum = 0
+    for cost in initial_cost_list:
+        sample_cost_sum += cost
+    mean_sample_cost = sample_cost_sum/50
+    std_dev = 0
+    for cost in initial_cost_list:
+        std_dev += (cost-mean_sample_cost)**2
+    std_dev /= 50-1
+    std_dev = sqrt(std_dev)
+    sa_initial_temp = 20*std_dev
+    sa_temp = sa_initial_temp
+    # Set the number of iterations at a given temperature
+    iters_per_temp = INITIAL_TEMP_COEFFICIENT * (num_cells_to_place**(4/3))
 
 
 def draw_net(routing_canvas, net):
@@ -221,6 +246,7 @@ def redraw_line(routing_canvas, line: Line):
     sink_y = sink_centre[1]
     routing_canvas.coords(line.canvas_id, source_x, source_y, sink_x, sink_y)
 
+
 def key_handler(routing_canvas, event):
     """
     Accepts a key event and makes an appropriate decision.
@@ -268,7 +294,14 @@ def sa_step(routing_canvas):
     :param routing_canvas: Tkinter canvas
     :return: void
     """
+    global placement_done
+    global iters_this_temp
+    global sa_temp
+    global accepted_moves_this_temp
+    global sa_initial_temp
+
     if placement_done:
+        print("Placement done!")
         return
 
     # Choose two cells randomly
@@ -284,6 +317,17 @@ def sa_step(routing_canvas):
     # Check if move will be taken
     if decision_value < decision_boundary:
         swap(routing_canvas, cell_a, cell_b, delta)
+        accepted_moves_this_temp += 1
+
+    # Check for temperature update
+    iters_this_temp += 1
+    if iters_this_temp >= iters_per_temp:
+        # Reduce temperature
+        sa_temp *= COOLING_FACTOR
+        iters_this_temp = 0
+        if accepted_moves_this_temp == 0 and sa_temp/sa_initial_temp < 0.05:
+            placement_done = True
+        accepted_moves_this_temp = 0
 
 
 def swap(routing_canvas, cell_a: Cell, cell_b: Cell, delta: int):
@@ -458,7 +502,7 @@ def create_placement_grid(routing_file) -> list[list[Site]]:
         source_cell = cell_dict[source_id]
         new_net.source = source_cell
         source_cell.nets.append(new_net)
-        for sink_idx in range(2, num_cells_in_net):
+        for sink_idx in range(2, num_cells_in_net+1):
             sink_id = int(net_tokens[sink_idx])
             sink_cell = cell_dict[sink_id]
             new_net.sinks.append(sink_cell)
