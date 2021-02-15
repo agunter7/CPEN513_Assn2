@@ -179,12 +179,20 @@ def initial_placement(routing_canvas):
         # Draw net on canvas
         draw_net(routing_canvas, net)
 
+    # Find the initial cost
     current_cost = calculate_total_cost()
+
     # Set the initial annealing temperature as 20*std_dev of cost of 50 swaps
     initial_cost_list = []
     for _ in range(50):
-        cell_a, cell_b = pick_random_cell_pair()
-        initial_cost_list.append(get_swap_delta(cell_a, cell_b))
+        cell_a, target_x, target_y = pick_random_move()
+        # Check if target site is occupied by a cell
+        target_site = placement_grid[target_y][target_x]
+        if target_site.isOccupied:
+            cell_b = target_site.occupant
+            initial_cost_list.append(get_swap_delta(cell_a, cell_b))
+        else:
+            initial_cost_list.append(get_move_delta(cell_a, target_x, target_y))
     sample_cost_sum = 0
     for cost in initial_cost_list:
         sample_cost_sum += cost
@@ -196,6 +204,7 @@ def initial_placement(routing_canvas):
     std_dev = sqrt(std_dev)
     sa_initial_temp = 20*std_dev
     sa_temp = sa_initial_temp
+
     # Set the number of iterations at a given temperature
     iters_per_temp = INITIAL_TEMP_COEFFICIENT * (num_cells_to_place**(4/3))
 
@@ -285,7 +294,9 @@ def sa_multistep(routing_canvas, n):
     :param n: Number of iterations
     :return: void
     """
-    pass
+
+    for _ in range(n):
+        sa_step(routing_canvas)
 
 
 def sa_step(routing_canvas):
@@ -304,11 +315,20 @@ def sa_step(routing_canvas):
         print("Placement done!")
         return
 
-    # Choose two cells randomly
-    cell_a, cell_b = pick_random_cell_pair()
+    # Choose move randomly
+    cell_a, target_x, target_y = pick_random_move()
 
-    # Calculate theoretical delta
-    delta = get_swap_delta(cell_a, cell_b)
+    # Check if target site is occupied by a cell
+    target_site = placement_grid[target_y][target_x]
+    cell_b = None
+    if target_site.isOccupied:
+        cell_b = target_site.occupant
+
+        # Calculate theoretical delta
+        delta = get_swap_delta(cell_a, cell_b)
+    else:
+        # Calculate theoretical delta
+        delta = get_move_delta(cell_a, target_x, target_y)
 
     # Generate random decision boundary
     decision_value = random.random()
@@ -316,7 +336,10 @@ def sa_step(routing_canvas):
 
     # Check if move will be taken
     if decision_value < decision_boundary:
-        swap(routing_canvas, cell_a, cell_b, delta)
+        if target_site.isOccupied:
+            swap(routing_canvas, cell_a, cell_b, delta)
+        else:
+            move(routing_canvas, cell_a, target_x, target_y, delta)
         accepted_moves_this_temp += 1
 
     # Check for temperature update
@@ -330,7 +353,26 @@ def sa_step(routing_canvas):
         accepted_moves_this_temp = 0
 
 
-def swap(routing_canvas, cell_a: Cell, cell_b: Cell, delta: int):
+def move(routing_canvas: Canvas, cell: Cell, x: int, y:int, delta: float):
+    global current_cost
+
+    # Move the cell
+    old_site = cell.site
+    cell.site = placement_grid[y][x]
+    cell.site.isOccupied = True
+    old_site.isOccupied = False
+
+    # Redraw lines connected to the cell
+    for net in cell.nets:
+        for line in net:
+            if line.source is cell or line.sink is cell:
+                redraw_line(routing_canvas, line)
+
+    # Update total cost
+    current_cost += delta
+
+
+def swap(routing_canvas: Canvas, cell_a: Cell, cell_b: Cell, delta: float):
     global current_cost
 
     # Swap the cells
@@ -338,13 +380,11 @@ def swap(routing_canvas, cell_a: Cell, cell_b: Cell, delta: int):
     cell_a.site = cell_b.site
     cell_b.site = temp_site
 
-    # Delete lines connecting the cell pair
+    # Redraw lines connected to either cell
     for net_a in cell_a.nets:
         for line in net_a:
             if line.source is cell_a or line.sink is cell_a:
                 redraw_line(routing_canvas, line)
-
-                pass
     for net_b in cell_b.nets:
         for line in net_b:
             if line.source is cell_b or line.sink is cell_b:
@@ -352,6 +392,27 @@ def swap(routing_canvas, cell_a: Cell, cell_b: Cell, delta: int):
 
     # Update total cost
     current_cost += delta
+
+
+def get_move_delta(cell: Cell, x: int, y: int):
+    # Get the initial cost sum of all the nets the cell is in
+    starting_cost = 0
+    for net in cell.nets:
+        starting_cost += hpwl(net)
+
+    # Perform a temporary move
+    temp_site = cell.site
+    cell.site = placement_grid[y][x]
+
+    # Calculate new cost
+    final_cost = 0
+    for net in cell.nets:
+        final_cost += hpwl(net)
+
+    # Reverse the temporary move
+    cell.site = temp_site
+
+    return final_cost - starting_cost
 
 
 def get_swap_delta(cell_a: Cell, cell_b: Cell):
@@ -409,6 +470,23 @@ def hpwl(net: Net):
 
     # Calculate HPWL from bounding box
     return (rightmost_x-leftmost_x) + (lowest_y-highest_y)
+
+
+def pick_random_move():
+    """
+    Pick a random cell and a random spot to move that cell to
+    :return: (Cell,int,int) - cell,x,y
+    """
+    cell_idx = random.randrange(num_cells_to_place)
+    cell = cell_dict[cell_idx]
+    target_y = random.randrange(grid_height)
+    target_x = random.randrange(grid_width)
+
+    # Ensure target is not the cell's current location
+    if target_x == cell.site.x and target_y == cell.site.y:
+        return pick_random_move()
+    else:
+        return cell, target_x, target_y
 
 
 def pick_random_cell_pair():
