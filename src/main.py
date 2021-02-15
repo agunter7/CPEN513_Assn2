@@ -6,11 +6,13 @@ Uses Tkinter for GUI.
 
 import os
 import random
+import time
+import matplotlib.pyplot as plt
 from tkinter import *
 from math import exp, sqrt
 
 # Constants
-FILE_PATH = "../benchmarks/cm151a.txt"  # Path to the file with info about the circuit to place
+FILE_PATH = "../benchmarks/apex4.txt"  # Path to the file with info about the circuit to place
 COOLING_FACTOR = 0.9
 INITIAL_TEMP_COEFFICIENT = 50
 
@@ -25,6 +27,8 @@ net_dict = {}  # Dictionary of all nets, key is net ID
 placement_grid = []
 cell_queue = []
 placement_done = False  # Is the placement complete?
+cost_history = []
+iter_history = []
 # Simulated Annealing variables
 sa_temp = -1  # SA temperature
 sa_initial_temp = -1  # Starting SA temperature
@@ -147,6 +151,8 @@ def initial_placement(routing_canvas):
     global num_cells_to_place
     global iters_per_temp
     global sa_initial_temp
+    global cost_history
+    global iter_history
 
     # Check if there are enough sites for the requisite number of cells
     if num_cells_to_place > (grid_width*grid_height):
@@ -158,30 +164,36 @@ def initial_placement(routing_canvas):
         for y in range(grid_height):
             free_sites.append((x, y))
     random.shuffle(free_sites)
+    print(len(free_sites))
 
     for net in net_dict.values():
         # Place the net's source
-        place_x, place_y = free_sites.pop()
-        placement_site = placement_grid[place_y][place_x]
-        placement_site.occupant = net.source
-        net.source.site = placement_site
-        placement_site.isOccupied = True
-        net.source.isPlaced = True
+        if not net.source.isPlaced:
+            place_x, place_y = free_sites.pop()
+            placement_site = placement_grid[place_y][place_x]
+            placement_site.occupant = net.source
+            net.source.site = placement_site
+            placement_site.isOccupied = True
+            net.source.isPlaced = True
 
         # Place the net's sinks
         for sink in net.sinks:
-            place_x, place_y = free_sites.pop()
-            placement_site = placement_grid[place_y][place_x]
-            placement_site.occupant = sink
-            sink.site = placement_site
-            placement_site.isOccupied = True
-            sink.isPlaced = True
+            if not sink.isPlaced:
+                place_x, place_y = free_sites.pop()
+                placement_site = placement_grid[place_y][place_x]
+                placement_site.occupant = sink
+                sink.site = placement_site
+                placement_site.isOccupied = True
+                sink.isPlaced = True
 
         # Draw net on canvas
         draw_net(routing_canvas, net)
 
     # Find the initial cost
     current_cost = calculate_total_cost()
+    # Store for plotting
+    cost_history.append(current_cost)
+    iter_history.append(total_iters)
 
     # Set the initial annealing temperature as 20*std_dev of cost of 50 swaps
     initial_cost_list = []
@@ -286,9 +298,12 @@ def sa_to_completion(routing_canvas):
     :return: void
     """
 
+    start = time.time()
     while not placement_done:
         sa_step(routing_canvas)
-
+    end = time.time()
+    elapsed = end - start
+    print("Took " + str(elapsed))
 
 def sa_multistep(routing_canvas, n):
     """
@@ -347,7 +362,6 @@ def sa_step(routing_canvas):
             move(routing_canvas, cell_a, target_x, target_y, delta)
         if delta != 0:
             meaningful_moves_this_temp += 1
-    #print("T: " + str(sa_temp) + "; C: " + str(current_cost) + "; D: " + str(delta))
 
     # Check for temperature update
     iters_this_temp += 1
@@ -356,8 +370,19 @@ def sa_step(routing_canvas):
         sa_temp *= COOLING_FACTOR
         total_iters += iters_this_temp
         iters_this_temp = 0
+
+        # Heartbeat
+        print("T: " + str(sa_temp) + "; C: " + str(current_cost) + "; Iter: " + str(total_iters))
+
+        # Store data for plot
+        cost_history.append(current_cost)
+        iter_history.append(total_iters)
+
         if meaningful_moves_this_temp == 0 and sa_temp/sa_initial_temp < 0.05:
+            plt.plot(iter_history, cost_history, '.', color="black")
+            plt.show()
             placement_done = True
+            print("Final cost: " + str(current_cost))
             print("Total iterations: " + str(total_iters))
         meaningful_moves_this_temp = 0
 
