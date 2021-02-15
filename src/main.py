@@ -119,7 +119,7 @@ def main():
             top_left_y = site_length * y
             bottom_right_x = top_left_x + site_length
             bottom_right_y = top_left_y + site_length
-            rectangle_colour = "blue"
+            rectangle_colour = "white"
             rectangle_coords = (top_left_x, top_left_y, bottom_right_x, bottom_right_y)
             site = placement_grid[y][x]
             site.canvas_id = routing_canvas.create_rectangle(rectangle_coords, fill=rectangle_colour)
@@ -324,6 +324,9 @@ def sa_step(routing_canvas):
     if target_site.isOccupied:
         cell_b = target_site.occupant
 
+        if cell_b is None:
+            print("Shite")
+
         # Calculate theoretical delta
         delta = get_swap_delta(cell_a, cell_b)
     else:
@@ -360,11 +363,13 @@ def move(routing_canvas: Canvas, cell: Cell, x: int, y:int, delta: float):
     old_site = cell.site
     cell.site = placement_grid[y][x]
     cell.site.isOccupied = True
+    cell.site.occupant = cell
     old_site.isOccupied = False
+    old_site.occupant = None
 
     # Redraw lines connected to the cell
     for net in cell.nets:
-        for line in net:
+        for line in net.lines:
             if line.source is cell or line.sink is cell:
                 redraw_line(routing_canvas, line)
 
@@ -379,14 +384,16 @@ def swap(routing_canvas: Canvas, cell_a: Cell, cell_b: Cell, delta: float):
     temp_site = cell_a.site
     cell_a.site = cell_b.site
     cell_b.site = temp_site
+    cell_a.site.occupant = cell_a
+    cell_b.site.occupant = cell_b
 
     # Redraw lines connected to either cell
     for net_a in cell_a.nets:
-        for line in net_a:
+        for line in net_a.lines:
             if line.source is cell_a or line.sink is cell_a:
                 redraw_line(routing_canvas, line)
     for net_b in cell_b.nets:
-        for line in net_b:
+        for line in net_b.lines:
             if line.source is cell_b or line.sink is cell_b:
                 redraw_line(routing_canvas, line)
 
