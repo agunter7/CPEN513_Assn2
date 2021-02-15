@@ -30,8 +30,9 @@ sa_temp = -1  # SA temperature
 sa_initial_temp = -1  # Starting SA temperature
 iters_per_temp = -1  # Number of iterations to perform at each temperature
 iters_this_temp = 0  # Number of iterations performed at the current temperature
-accepted_moves_this_temp = 0  # Number of moves accepted at the current temperature
+meaningful_moves_this_temp = 0  # Number of moves accepted at the current temperature
 current_cost = 0  # The estimated cost of the current placement
+total_iters = 0
 
 
 class Site:
@@ -203,6 +204,7 @@ def initial_placement(routing_canvas):
     std_dev /= 50-1
     std_dev = sqrt(std_dev)
     sa_initial_temp = 20*std_dev
+    print("Initial temperature: " + str(sa_initial_temp))
     sa_temp = sa_initial_temp
 
     # Set the number of iterations at a given temperature
@@ -284,7 +286,8 @@ def sa_to_completion(routing_canvas):
     :return: void
     """
 
-    pass
+    while not placement_done:
+        sa_step(routing_canvas)
 
 
 def sa_multistep(routing_canvas, n):
@@ -308,8 +311,10 @@ def sa_step(routing_canvas):
     global placement_done
     global iters_this_temp
     global sa_temp
-    global accepted_moves_this_temp
+    global meaningful_moves_this_temp
     global sa_initial_temp
+    global current_cost
+    global total_iters
 
     if placement_done:
         print("Placement done!")
@@ -323,9 +328,6 @@ def sa_step(routing_canvas):
     cell_b = None
     if target_site.isOccupied:
         cell_b = target_site.occupant
-
-        if cell_b is None:
-            print("Shite")
 
         # Calculate theoretical delta
         delta = get_swap_delta(cell_a, cell_b)
@@ -343,21 +345,26 @@ def sa_step(routing_canvas):
             swap(routing_canvas, cell_a, cell_b, delta)
         else:
             move(routing_canvas, cell_a, target_x, target_y, delta)
-        accepted_moves_this_temp += 1
+        if delta != 0:
+            meaningful_moves_this_temp += 1
+    #print("T: " + str(sa_temp) + "; C: " + str(current_cost) + "; D: " + str(delta))
 
     # Check for temperature update
     iters_this_temp += 1
     if iters_this_temp >= iters_per_temp:
         # Reduce temperature
         sa_temp *= COOLING_FACTOR
+        total_iters += iters_this_temp
         iters_this_temp = 0
-        if accepted_moves_this_temp == 0 and sa_temp/sa_initial_temp < 0.05:
+        if meaningful_moves_this_temp == 0 and sa_temp/sa_initial_temp < 0.05:
             placement_done = True
-        accepted_moves_this_temp = 0
+            print("Total iterations: " + str(total_iters))
+        meaningful_moves_this_temp = 0
 
 
 def move(routing_canvas: Canvas, cell: Cell, x: int, y:int, delta: float):
     global current_cost
+    global sa_temp
 
     # Move the cell
     old_site = cell.site
@@ -401,7 +408,7 @@ def swap(routing_canvas: Canvas, cell_a: Cell, cell_b: Cell, delta: float):
     current_cost += delta
 
 
-def get_move_delta(cell: Cell, x: int, y: int):
+def get_move_delta(cell: Cell, x: int, y: int) -> float:
     # Get the initial cost sum of all the nets the cell is in
     starting_cost = 0
     for net in cell.nets:
@@ -422,7 +429,7 @@ def get_move_delta(cell: Cell, x: int, y: int):
     return final_cost - starting_cost
 
 
-def get_swap_delta(cell_a: Cell, cell_b: Cell):
+def get_swap_delta(cell_a: Cell, cell_b: Cell) -> float:
     # Get the initial cost sum of all nets the target cells are found in
     starting_cost = 0
     unique_net_list = []  # cell_a and cell_b could share nets, need to avoid double entries
@@ -450,7 +457,7 @@ def get_swap_delta(cell_a: Cell, cell_b: Cell):
     return final_cost - starting_cost
 
 
-def hpwl(net: Net):
+def hpwl(net: Net) -> float:
     """
     Calculate the Half-Perimeter Wire Length of a net
     :param net: Net to calculate HPWL for
@@ -476,7 +483,7 @@ def hpwl(net: Net):
             highest_y = site_y
 
     # Calculate HPWL from bounding box
-    return (rightmost_x-leftmost_x) + (lowest_y-highest_y)
+    return float((rightmost_x-leftmost_x) + (lowest_y-highest_y))
 
 
 def pick_random_move():
