@@ -15,7 +15,8 @@ from math import exp, sqrt
 FILE_NAME = "C880.txt"
 FILE_PATH = "../benchmarks/" + FILE_NAME  # Path to the file with info about the circuit to place
 COOLING_FACTOR = 0.9
-INITIAL_TEMP_COEFFICIENT = 50
+INITIAL_TEMP_COEFFICIENT = 20
+MOVES_PER_TEMP_COEFFICIENT = 50
 TEMP_EXIT_RATIO = 0.002
 COST_EXIT_RATIO = 0.005
 
@@ -153,7 +154,7 @@ def initial_placement(routing_canvas):
     global placement_grid
     global current_cost
     global sa_temp
-    global INITIAL_TEMP_COEFFICIENT
+    global MOVES_PER_TEMP_COEFFICIENT
     global num_cells_to_place
     global iters_per_temp
     global sa_initial_temp
@@ -221,12 +222,12 @@ def initial_placement(routing_canvas):
         std_dev += (cost-mean_sample_cost)**2
     std_dev /= 50-1
     std_dev = sqrt(std_dev)
-    sa_initial_temp = 20*std_dev
+    sa_initial_temp = INITIAL_TEMP_COEFFICIENT*std_dev
     print("Initial temperature: " + str(sa_initial_temp))
     sa_temp = sa_initial_temp
 
     # Set the number of iterations at a given temperature
-    iters_per_temp = INITIAL_TEMP_COEFFICIENT * (num_cells_to_place**(4/3))
+    iters_per_temp = MOVES_PER_TEMP_COEFFICIENT * (num_cells_to_place ** (4 / 3))
 
 
 def draw_net(routing_canvas, net):
@@ -383,7 +384,7 @@ def sa_step(routing_canvas):
         iters_this_temp = 0
 
         # Heartbeat
-        print("T: " + str(sa_temp) + "; C: " + str(current_cost) + "; Iter: " + str(total_iters))
+        print("Temperature: " + str(sa_temp) + "; Cost: " + str(current_cost) + "; Iterations: " + str(total_iters))
 
         # Store data for plot
         cost_history.append(current_cost)
