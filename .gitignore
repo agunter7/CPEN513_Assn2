@@ -132,3 +132,7 @@ dmypy.json
 .idea/
 src/example.py
 example.py
+*.png
+*.csv
+*.xlsx
+baseline/

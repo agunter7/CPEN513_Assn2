@@ -12,9 +12,12 @@ from tkinter import *
 from math import exp, sqrt
 
 # Constants
-FILE_PATH = "../benchmarks/apex4.txt"  # Path to the file with info about the circuit to place
+FILE_NAME = "apex1.txt"
+FILE_PATH = "../benchmarks/" + FILE_NAME  # Path to the file with info about the circuit to place
 COOLING_FACTOR = 0.9
 INITIAL_TEMP_COEFFICIENT = 50
+TEMP_EXIT_RATIO = 0.002
+COST_EXIT_RATIO = 0.005
 
 
 # Global variables
@@ -36,6 +39,7 @@ iters_per_temp = -1  # Number of iterations to perform at each temperature
 iters_this_temp = 0  # Number of iterations performed at the current temperature
 meaningful_moves_this_temp = 0  # Number of moves accepted at the current temperature
 current_cost = 0  # The estimated cost of the current placement
+prev_temp_cost = 0
 total_iters = 0
 
 
@@ -255,7 +259,7 @@ def draw_line(routing_canvas, source: Cell, sink: Cell):
     sink_x = sink_centre[0]
     sink_y = sink_centre[1]
 
-    line_id = routing_canvas.create_line(source_x, source_y, sink_x, sink_y, fill='red', width=1)
+    line_id = routing_canvas.create_line(source_x, source_y, sink_x, sink_y, fill='red', width=0.01)
 
     return line_id
 
@@ -305,6 +309,7 @@ def sa_to_completion(routing_canvas):
     elapsed = end - start
     print("Took " + str(elapsed))
 
+
 def sa_multistep(routing_canvas, n):
     """
     Perform multiple iterations of SA
@@ -330,6 +335,7 @@ def sa_step(routing_canvas):
     global sa_initial_temp
     global current_cost
     global total_iters
+    global prev_temp_cost
 
     if placement_done:
         print("Placement done!")
@@ -378,16 +384,29 @@ def sa_step(routing_canvas):
         cost_history.append(current_cost)
         iter_history.append(total_iters)
 
-        if meaningful_moves_this_temp == 0 and sa_temp/sa_initial_temp < 0.05:
+        if (prev_temp_cost-current_cost)/current_cost < COST_EXIT_RATIO and \
+                sa_temp/sa_initial_temp < TEMP_EXIT_RATIO:
             plt.plot(iter_history, cost_history, '.', color="black")
+            plt.xlabel("Sim. Anneal. Iterations")
+            plt.ylabel("HPWL Cost")
             plt.show()
             placement_done = True
             print("Final cost: " + str(current_cost))
             print("Total iterations: " + str(total_iters))
+            # Write to file
+            outfile_name = str(FILE_NAME[:-4]) + ".csv"
+            with open(outfile_name, "w") as f:
+                for iters in iter_history:
+                    f.write(str(iters) + ",")
+                f.write("\n")
+                for cost in cost_history:
+                    f.write(str(cost) + ",")
+
+        prev_temp_cost = current_cost
         meaningful_moves_this_temp = 0
 
 
-def move(routing_canvas: Canvas, cell: Cell, x: int, y:int, delta: float):
+def move(routing_canvas: Canvas, cell: Cell, x: int, y: int, delta: float):
     global current_cost
     global sa_temp
 
