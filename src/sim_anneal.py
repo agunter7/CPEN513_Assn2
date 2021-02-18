@@ -34,6 +34,7 @@ placement_done = False  # Is the placement complete?
 cost_history = []
 iter_history = []
 root = None
+unique_line_list = []
 # Simulated Annealing variables
 sa_temp = -1  # SA temperature
 sa_initial_temp = -1  # Starting SA temperature
@@ -234,6 +235,7 @@ def draw_net(routing_canvas, net):
     """
     Draw a net on the canvas from scratch
     """
+    global unique_line_list
 
     # Check that net is fully placed
     if not net.source.isPlaced:
@@ -247,6 +249,7 @@ def draw_net(routing_canvas, net):
         line_id = draw_line(routing_canvas, net.source, sink)
         new_line = Line(net.source, sink, line_id)
         net.lines.append(new_line)
+        unique_line_list.append(new_line)
 
 
 def draw_line(routing_canvas, source: Cell, sink: Cell):
@@ -376,7 +379,7 @@ def sa_step(routing_canvas):
     # Check for temperature update
     iters_this_temp += 1
     if iters_this_temp >= iters_per_temp:
-        root.update_idletasks()
+        root.update_idletasks()  # Update the Tkinter GUI
 
         # Reduce temperature
         sa_temp *= COOLING_FACTOR
@@ -411,6 +414,13 @@ def sa_step(routing_canvas):
                     f.write(str(cost) + ",")
 
         prev_temp_cost = current_cost
+
+
+def redraw_all_lines(routing_canvas:Canvas):
+    global unique_line_list
+
+    for line in unique_line_list:
+        redraw_line(routing_canvas, line)
 
 
 def move(routing_canvas: Canvas, cell: Cell, x: int, y: int, delta: float):
