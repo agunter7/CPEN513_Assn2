@@ -12,11 +12,13 @@ from tkinter import *
 from math import exp, sqrt
 
 # Constants
-FILE_NAME = "C880.txt"
-FILE_PATH = "../benchmarks/" + FILE_NAME  # Path to the file with info about the circuit to place
-COOLING_FACTOR = 0.9
-INITIAL_TEMP_COEFFICIENT = 20
-MOVES_PER_TEMP_COEFFICIENT = 50
+FILE_NAME = "C880.txt"  # Name the file with info about the circuit to place
+FILE_DIR = "../benchmarks/"
+
+# Hyperparameters
+cooling_factor = 0.9
+initial_temp_factor = 20
+moves_per_temp_factor = 50
 TEMP_EXIT_RATIO = 0.002
 COST_EXIT_RATIO = 0.005
 
@@ -95,12 +97,13 @@ class Net:
         pass
 
 
-def anneal():
+def anneal(f_name: str = None):
     """
     Top-level main function
     :return: void
     """
-    global FILE_PATH
+    global FILE_DIR
+    global FILE_NAME
     global num_cells_to_place
     global num_cell_connections
     global grid_width
@@ -111,8 +114,11 @@ def anneal():
     random.seed(0)  # Set random seed
 
     # Read input file
+    if f_name is None:
+        f_name = FILE_NAME
+    file_path = FILE_DIR + f_name
     script_path = os.path.dirname(__file__)
-    true_path = os.path.join(script_path, FILE_PATH)
+    true_path = os.path.join(script_path, file_path)
     routing_file = open(true_path, "r")
 
     # Setup the routing grid/array
@@ -155,7 +161,7 @@ def initial_placement(routing_canvas):
     global placement_grid
     global current_cost
     global sa_temp
-    global MOVES_PER_TEMP_COEFFICIENT
+    global moves_per_temp_factor
     global num_cells_to_place
     global iters_per_temp
     global sa_initial_temp
@@ -223,12 +229,12 @@ def initial_placement(routing_canvas):
         std_dev += (cost-mean_sample_cost)**2
     std_dev /= 50-1
     std_dev = sqrt(std_dev)
-    sa_initial_temp = INITIAL_TEMP_COEFFICIENT*std_dev
+    sa_initial_temp = initial_temp_factor * std_dev
     print("Initial temperature: " + str(sa_initial_temp))
     sa_temp = sa_initial_temp
 
     # Set the number of iterations at a given temperature
-    iters_per_temp = MOVES_PER_TEMP_COEFFICIENT * (num_cells_to_place ** (4 / 3))
+    iters_per_temp = moves_per_temp_factor * (num_cells_to_place ** (4 / 3))
 
 
 def draw_net(routing_canvas, net):
@@ -333,6 +339,7 @@ def sa_multistep(routing_canvas, n):
         if placement_done:
             break
         sa_step(routing_canvas)
+    redraw_all_lines(routing_canvas)
 
 
 def sa_step(routing_canvas):
@@ -379,10 +386,11 @@ def sa_step(routing_canvas):
     # Check for temperature update
     iters_this_temp += 1
     if iters_this_temp >= iters_per_temp:
+        redraw_all_lines(routing_canvas)
         root.update_idletasks()  # Update the Tkinter GUI
 
         # Reduce temperature
-        sa_temp *= COOLING_FACTOR
+        sa_temp *= cooling_factor
         total_iters += iters_this_temp
         iters_this_temp = 0
 
@@ -435,12 +443,6 @@ def move(routing_canvas: Canvas, cell: Cell, x: int, y: int, delta: float):
     old_site.isOccupied = False
     old_site.occupant = None
 
-    # Redraw lines connected to the cell
-    for net in cell.nets:
-        for line in net.lines:
-            if line.source is cell or line.sink is cell:
-                redraw_line(routing_canvas, line)
-
     # Update total cost
     current_cost += delta
 
@@ -454,16 +456,6 @@ def swap(routing_canvas: Canvas, cell_a: Cell, cell_b: Cell, delta: float):
     cell_b.site = temp_site
     cell_a.site.occupant = cell_a
     cell_b.site.occupant = cell_b
-
-    # Redraw lines connected to either cell
-    for net_a in cell_a.nets:
-        for line in net_a.lines:
-            if line.source is cell_a or line.sink is cell_a:
-                redraw_line(routing_canvas, line)
-    for net_b in cell_b.nets:
-        for line in net_b.lines:
-            if line.source is cell_b or line.sink is cell_b:
-                redraw_line(routing_canvas, line)
 
     # Update total cost
     current_cost += delta
