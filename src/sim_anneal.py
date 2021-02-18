@@ -12,16 +12,35 @@ from tkinter import *
 from math import exp, sqrt
 
 # Constants
-FILE_NAME = "C880.txt"  # Name the file with info about the circuit to place
+#file_name = "alu2.txt"
+#file_name = "apex1.txt"
+#file_name = "apex4.txt"
+#file_name = "C880.txt"
+file_name = ""
+#file_name = "cm150a.txt"
+#file_name = "cm151a.txt"
+#file_name = "cm162a.txt"
+#file_name = "cps.txt"
+#file_name = "e64.txt"
+#file_name = "paira.txt"
+#file_name = "pairb.txt"
 FILE_DIR = "../benchmarks/"
 
 # Hyperparameters
-cooling_factor = 0.9
-initial_temp_factor = 20
-moves_per_temp_factor = 50
+#cooling_factor = 0.95
+#cooling_factor = 0.90
+cooling_factor = 0
+#cooling_factor = 0.8
+#initial_temp_factor = 30
+#initial_temp_factor = 20
+initial_temp_factor = 0
+#moves_per_temp_factor = 75
+#moves_per_temp_factor = 50
+moves_per_temp_factor = 0
 TEMP_EXIT_RATIO = 0.002
 COST_EXIT_RATIO = 0.005
-
+MOVE_SAMPLE_SIZE = 50
+hyperparam_string = str(cooling_factor) + "-" + str(initial_temp_factor) + "-" + str(moves_per_temp_factor) + "-"
 
 # Global variables
 num_cells_to_place = 0  # Number of cells in the circuit to be placed
@@ -31,10 +50,10 @@ grid_height = 0  # Height of the placement grid
 cell_dict = {}  # Dictionary of all cells, key is cell ID
 net_dict = {}  # Dictionary of all nets, key is net ID
 placement_grid = []
-cell_queue = []
 placement_done = False  # Is the placement complete?
 cost_history = []
 iter_history = []
+temperature_history = []
 root = None
 unique_line_list = []
 # Simulated Annealing variables
@@ -42,7 +61,6 @@ sa_temp = -1  # SA temperature
 sa_initial_temp = -1  # Starting SA temperature
 iters_per_temp = -1  # Number of iterations to perform at each temperature
 iters_this_temp = 0  # Number of iterations performed at the current temperature
-meaningful_moves_this_temp = 0  # Number of moves accepted at the current temperature
 current_cost = 0  # The estimated cost of the current placement
 prev_temp_cost = 0
 total_iters = 0
@@ -96,14 +114,97 @@ class Net:
         self.lines = []
         pass
 
+def reset_globals():
+    global num_cells_to_place
+    global num_cell_connections
+    global grid_width
+    global grid_height
+    global cell_dict
+    global net_dict
+    global placement_grid
+    global placement_done
+    global cost_history
+    global iter_history
+    global temperature_history
+    global root
+    global unique_line_list
+    global sa_temp
+    global sa_initial_temp
+    global iters_per_temp
+    global iters_this_temp
+    global current_cost
+    global prev_temp_cost
+    global total_iters
 
-def anneal(f_name: str = None):
+    num_cells_to_place = 0
+    num_cell_connections = 0
+    grid_width = 0
+    grid_height = 0
+    cell_dict = {}
+    net_dict = {}
+    placement_grid = []
+    placement_done = False
+    cost_history = []
+    iter_history = []
+    temperature_history = []
+    root = None
+    unique_line_list = []
+    sa_temp = -1
+    sa_initial_temp = -1
+    iters_per_temp = -1
+    iters_this_temp = -1
+    current_cost = 0
+    prev_temp_cost = 0
+    total_iters = 0
+
+
+def quick_anneal(f_name, cool_fact, init_temp_fact, move_p_t_fact):
+    global FILE_DIR
+    global file_name
+    global num_cells_to_place
+    global num_cell_connections
+    global grid_width
+    global grid_height
+    global placement_grid
+    global cooling_factor
+    global initial_temp_factor
+    global moves_per_temp_factor
+    global hyperparam_string
+
+    reset_globals()
+
+    random.seed(0)  # Set random seed
+
+    file_name = f_name
+    cooling_factor = cool_fact
+    initial_temp_factor = init_temp_fact
+    moves_per_temp_factor = move_p_t_fact
+    hyperparam_string = str(cooling_factor) + "-" + str(initial_temp_factor) + "-" + str(moves_per_temp_factor) + "-"
+
+    print("Running: " + file_name + "-" + str(cooling_factor) + "-" + str(initial_temp_factor) + "-" +
+          str(moves_per_temp_factor))
+
+    file_path = FILE_DIR + f_name
+    script_path = os.path.dirname(__file__)
+    true_path = os.path.join(script_path, file_path)
+    routing_file = open(true_path, "r")
+
+    # Setup the routing grid/array
+    placement_grid = create_placement_grid(routing_file)
+
+    # Perform initial placement
+    initial_placement(None)
+
+    sa_to_completion(None)
+
+    
+def anneal():
     """
     Top-level main function
     :return: void
     """
     global FILE_DIR
-    global FILE_NAME
+    global file_name
     global num_cells_to_place
     global num_cell_connections
     global grid_width
@@ -113,10 +214,7 @@ def anneal(f_name: str = None):
 
     random.seed(0)  # Set random seed
 
-    # Read input file
-    if f_name is None:
-        f_name = FILE_NAME
-    file_path = FILE_DIR + f_name
+    file_path = FILE_DIR + file_name
     script_path = os.path.dirname(__file__)
     true_path = os.path.join(script_path, file_path)
     routing_file = open(true_path, "r")
@@ -201,17 +299,15 @@ def initial_placement(routing_canvas):
                 sink.isPlaced = True
 
         # Draw net on canvas
-        draw_net(routing_canvas, net)
+        if routing_canvas is not None:
+            draw_net(routing_canvas, net)
 
     # Find the initial cost
     current_cost = calculate_total_cost()
-    # Store for plotting
-    cost_history.append(current_cost)
-    iter_history.append(total_iters)
 
     # Set the initial annealing temperature as 20*std_dev of cost of 50 swaps
     initial_cost_list = []
-    for _ in range(50):
+    for _ in range(MOVE_SAMPLE_SIZE):
         cell_a, target_x, target_y = pick_random_move()
         # Check if target site is occupied by a cell
         target_site = placement_grid[target_y][target_x]
@@ -223,15 +319,20 @@ def initial_placement(routing_canvas):
     sample_cost_sum = 0
     for cost in initial_cost_list:
         sample_cost_sum += cost
-    mean_sample_cost = sample_cost_sum/50
+    mean_sample_cost = sample_cost_sum/MOVE_SAMPLE_SIZE
     std_dev = 0
     for cost in initial_cost_list:
         std_dev += (cost-mean_sample_cost)**2
-    std_dev /= 50-1
+    std_dev /= MOVE_SAMPLE_SIZE-1
     std_dev = sqrt(std_dev)
     sa_initial_temp = initial_temp_factor * std_dev
     print("Initial temperature: " + str(sa_initial_temp))
     sa_temp = sa_initial_temp
+
+    # Store for plotting
+    cost_history.append(current_cost)
+    iter_history.append(total_iters)
+    temperature_history.append(sa_temp)
 
     # Set the number of iterations at a given temperature
     iters_per_temp = moves_per_temp_factor * (num_cells_to_place ** (4 / 3))
@@ -252,8 +353,11 @@ def draw_net(routing_canvas, net):
 
     # Draw line between cells
     for sink in net.sinks:
-        line_id = draw_line(routing_canvas, net.source, sink)
-        new_line = Line(net.source, sink, line_id)
+        if routing_canvas is not None:
+            line_id = draw_line(routing_canvas, net.source, sink)
+            new_line = Line(net.source, sink, line_id)
+        else:
+            new_line = Line(net.source, sink, -1)
         net.lines.append(new_line)
         unique_line_list.append(new_line)
 
@@ -320,6 +424,19 @@ def sa_to_completion(routing_canvas):
     end = time.time()
     elapsed = end - start
     print("Took " + str(elapsed))
+    # Write to file
+    outfile_name = hyperparam_string + str(file_name[:-4]) + ".csv"
+    with open(outfile_name, "w") as f:
+        for iters in iter_history:
+            f.write(str(iters) + ",")
+        f.write("\n")
+        for cost in cost_history:
+            f.write(str(cost) + ",")
+        f.write("\n")
+        for temp in temperature_history:
+            f.write(str(temp) + ", ")
+        f.write("\n")
+        f.write(str(elapsed))
 
 
 def sa_multistep(routing_canvas, n):
@@ -339,7 +456,8 @@ def sa_multistep(routing_canvas, n):
         if placement_done:
             break
         sa_step(routing_canvas)
-    redraw_all_lines(routing_canvas)
+    if routing_canvas is not None:
+        redraw_all_lines(routing_canvas)
 
 
 def sa_step(routing_canvas):
@@ -379,15 +497,17 @@ def sa_step(routing_canvas):
     # Check if move will be taken
     if decision_value < decision_boundary:
         if target_site.isOccupied:
-            swap(routing_canvas, cell_a, cell_b, delta)
+            swap(cell_a, cell_b, delta)
         else:
-            move(routing_canvas, cell_a, target_x, target_y, delta)
+            move(cell_a, target_x, target_y, delta)
 
     # Check for temperature update
     iters_this_temp += 1
     if iters_this_temp >= iters_per_temp:
-        redraw_all_lines(routing_canvas)
-        root.update_idletasks()  # Update the Tkinter GUI
+        if routing_canvas is not None:
+            redraw_all_lines(routing_canvas)
+        if root is not None:
+            root.update_idletasks()  # Update the Tkinter GUI
 
         # Reduce temperature
         sa_temp *= cooling_factor
@@ -400,26 +520,21 @@ def sa_step(routing_canvas):
         # Store data for plot
         cost_history.append(current_cost)
         iter_history.append(total_iters)
+        temperature_history.append(sa_temp)
 
         if (prev_temp_cost-current_cost)/current_cost < COST_EXIT_RATIO and \
                 sa_temp/sa_initial_temp < TEMP_EXIT_RATIO:
             # Placement is complete
+            placement_done = True
             # Plot cost history and save data
             plt.plot(iter_history, cost_history, '.', color="black")
             plt.xlabel("Sim. Anneal. Iterations")
             plt.ylabel("HPWL Cost")
+            outplot_name = hyperparam_string + str(file_name[:-4]) + ".png"
+            plt.savefig(outplot_name)
             plt.show()
-            placement_done = True
             print("Final cost: " + str(current_cost))
             print("Total iterations: " + str(total_iters))
-            # Write to file
-            outfile_name = str(FILE_NAME[:-4]) + ".csv"
-            with open(outfile_name, "w") as f:
-                for iters in iter_history:
-                    f.write(str(iters) + ",")
-                f.write("\n")
-                for cost in cost_history:
-                    f.write(str(cost) + ",")
 
         prev_temp_cost = current_cost
 
@@ -431,7 +546,7 @@ def redraw_all_lines(routing_canvas:Canvas):
         redraw_line(routing_canvas, line)
 
 
-def move(routing_canvas: Canvas, cell: Cell, x: int, y: int, delta: float):
+def move(cell: Cell, x: int, y: int, delta: float):
     global current_cost
     global sa_temp
 
@@ -447,7 +562,7 @@ def move(routing_canvas: Canvas, cell: Cell, x: int, y: int, delta: float):
     current_cost += delta
 
 
-def swap(routing_canvas: Canvas, cell_a: Cell, cell_b: Cell, delta: float):
+def swap(cell_a: Cell, cell_b: Cell, delta: float):
     global current_cost
 
     # Swap the cells
@@ -571,26 +686,6 @@ def pick_random_cell_pair():
         return cell_a, cell_b
     else:
         return pick_random_cell_pair()
-
-
-def add_text(routing_canvas: Canvas, cell: Cell) -> int:
-    """
-    Add text for the routing value of a cell to the canvas.
-    To be used when adding a cell to the wavefront.
-    :param routing_canvas: Tkinter canvas
-    :param cell: Cell
-    :return: int - Tkinter ID for added text
-    """
-    pass
-
-
-def cleanup_candidates(routing_canvas):
-    """
-    Cleanup the canvas
-    :param routing_canvas: Tkinter canvas
-    :return: void
-    """
-    pass
 
 
 def create_placement_grid(routing_file) -> list[list[Site]]:
