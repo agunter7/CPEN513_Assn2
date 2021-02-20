@@ -1,0 +1,1146 @@
+C:\Users\Andrew\AppData\Local\Programs\Python\Python39\python.exe C:/Users/Andrew/Documents/UNIVERSITY/UBC/W21/CAD/Assignment_2/CPEN513_Assn2/src/main.py
+Running: apex4.txt-0.8-10-25
+1400
+Initial temperature: 400.37946286705846
+Temperature: 320.30357029364677; Cost: 42718.0; Iterations: 351070
+Temperature: 256.24285623491744; Cost: 43139.0; Iterations: 702140
+Temperature: 204.99428498793395; Cost: 41675.0; Iterations: 1053210
+Temperature: 163.99542799034717; Cost: 41916.0; Iterations: 1404280
+Temperature: 131.19634239227773; Cost: 42180.0; Iterations: 1755350
+Temperature: 104.95707391382219; Cost: 42107.0; Iterations: 2106420
+Temperature: 83.96565913105775; Cost: 41947.0; Iterations: 2457490
+Temperature: 67.1725273048462; Cost: 41048.0; Iterations: 2808560
+Temperature: 53.738021843876965; Cost: 40192.0; Iterations: 3159630
+Temperature: 42.99041747510157; Cost: 39807.0; Iterations: 3510700
+Temperature: 34.39233398008126; Cost: 39274.0; Iterations: 3861770
+Temperature: 27.51386718406501; Cost: 37399.0; Iterations: 4212840
+Temperature: 22.01109374725201; Cost: 36597.0; Iterations: 4563910
+Temperature: 17.608874997801607; Cost: 34847.0; Iterations: 4914980
+Temperature: 14.087099998241285; Cost: 32373.0; Iterations: 5266050
+Temperature: 11.269679998593029; Cost: 28959.0; Iterations: 5617120
+Temperature: 9.015743998874424; Cost: 26782.0; Iterations: 5968190
+Temperature: 7.212595199099539; Cost: 24436.0; Iterations: 6319260
+Temperature: 5.770076159279632; Cost: 21855.0; Iterations: 6670330
+Temperature: 4.616060927423706; Cost: 19748.0; Iterations: 7021400
+Temperature: 3.692848741938965; Cost: 17878.0; Iterations: 7372470
+Temperature: 2.9542789935511724; Cost: 16536.0; Iterations: 7723540
+Temperature: 2.363423194840938; Cost: 15414.0; Iterations: 8074610
+Temperature: 1.8907385558727505; Cost: 14122.0; Iterations: 8425680
+Temperature: 1.5125908446982006; Cost: 13206.0; Iterations: 8776750
+Temperature: 1.2100726757585605; Cost: 12605.0; Iterations: 9127820
+Temperature: 0.9680581406068485; Cost: 12036.0; Iterations: 9478890
+Temperature: 0.7744465124854788; Cost: 11613.0; Iterations: 9829960
+Temperature: 0.619557209988383; Cost: 11318.0; Iterations: 10181030
+Temperature: 0.4956457679907065; Cost: 11051.0; Iterations: 10532100
+Temperature: 0.3965166143925652; Cost: 10867.0; Iterations: 10883170
+Temperature: 0.3172132915140522; Cost: 10758.0; Iterations: 11234240
+Temperature: 0.25377063321124177; Cost: 10663.0; Iterations: 11585310
+Temperature: 0.20301650656899342; Cost: 10580.0; Iterations: 11936380
+Temperature: 0.16241320525519476; Cost: 10527.0; Iterations: 12287450
+Temperature: 0.1299305642041558; Cost: 10487.0; Iterations: 12638520
+Final cost: 10487.0
+Total iterations: 12638520
+Took 931.3630256652832
+Running: apex4.txt-0.8-10-50
+1400
+Initial temperature: 400.37946286705846
+Temperature: 320.30357029364677; Cost: 43290.0; Iterations: 702139
+Temperature: 256.24285623491744; Cost: 43407.0; Iterations: 1404278
+Temperature: 204.99428498793395; Cost: 42674.0; Iterations: 2106417
+Temperature: 163.99542799034717; Cost: 43382.0; Iterations: 2808556
+Temperature: 131.19634239227773; Cost: 42418.0; Iterations: 3510695
+Temperature: 104.95707391382219; Cost: 41765.0; Iterations: 4212834
+Temperature: 83.96565913105775; Cost: 40423.0; Iterations: 4914973
+Temperature: 67.1725273048462; Cost: 41446.0; Iterations: 5617112
+Temperature: 53.738021843876965; Cost: 40042.0; Iterations: 6319251
+Temperature: 42.99041747510157; Cost: 39088.0; Iterations: 7021390
+Temperature: 34.39233398008126; Cost: 38907.0; Iterations: 7723529
+Temperature: 27.51386718406501; Cost: 37717.0; Iterations: 8425668
+Temperature: 22.01109374725201; Cost: 36112.0; Iterations: 9127807
+Temperature: 17.608874997801607; Cost: 34144.0; Iterations: 9829946
+Temperature: 14.087099998241285; Cost: 32989.0; Iterations: 10532085
+Temperature: 11.269679998593029; Cost: 29563.0; Iterations: 11234224
+Temperature: 9.015743998874424; Cost: 26643.0; Iterations: 11936363
+Temperature: 7.212595199099539; Cost: 23923.0; Iterations: 12638502
+Temperature: 5.770076159279632; Cost: 22373.0; Iterations: 13340641
+Temperature: 4.616060927423706; Cost: 19849.0; Iterations: 14042780
+Temperature: 3.692848741938965; Cost: 18146.0; Iterations: 14744919
+Temperature: 2.9542789935511724; Cost: 16207.0; Iterations: 15447058
+Temperature: 2.363423194840938; Cost: 14864.0; Iterations: 16149197
+Temperature: 1.8907385558727505; Cost: 13911.0; Iterations: 16851336
+Temperature: 1.5125908446982006; Cost: 12902.0; Iterations: 17553475
+Temperature: 1.2100726757585605; Cost: 12294.0; Iterations: 18255614
+Temperature: 0.9680581406068485; Cost: 11789.0; Iterations: 18957753
+Temperature: 0.7744465124854788; Cost: 11393.0; Iterations: 19659892
+Temperature: 0.619557209988383; Cost: 11009.0; Iterations: 20362031
+Temperature: 0.4956457679907065; Cost: 10756.0; Iterations: 21064170
+Temperature: 0.3965166143925652; Cost: 10579.0; Iterations: 21766309
+Temperature: 0.3172132915140522; Cost: 10431.0; Iterations: 22468448
+Temperature: 0.25377063321124177; Cost: 10356.0; Iterations: 23170587
+Temperature: 0.20301650656899342; Cost: 10275.0; Iterations: 23872726
+Temperature: 0.16241320525519476; Cost: 10209.0; Iterations: 24574865
+Temperature: 0.1299305642041558; Cost: 10165.0; Iterations: 25277004
+Final cost: 10165.0
+Total iterations: 25277004
+Took 1891.7691452503204
+Running: apex4.txt-0.8-10-75
+1400
+Initial temperature: 400.37946286705846
+Temperature: 320.30357029364677; Cost: 43234.0; Iterations: 1053209
+Temperature: 256.24285623491744; Cost: 42819.0; Iterations: 2106418
+Temperature: 204.99428498793395; Cost: 43461.0; Iterations: 3159627
+Temperature: 163.99542799034717; Cost: 41575.0; Iterations: 4212836
+Temperature: 131.19634239227773; Cost: 42774.0; Iterations: 5266045
+Temperature: 104.95707391382219; Cost: 41894.0; Iterations: 6319254
+Temperature: 83.96565913105775; Cost: 42265.0; Iterations: 7372463
+Temperature: 67.1725273048462; Cost: 41270.0; Iterations: 8425672
+Temperature: 53.738021843876965; Cost: 40581.0; Iterations: 9478881
+Temperature: 42.99041747510157; Cost: 39107.0; Iterations: 10532090
+Temperature: 34.39233398008126; Cost: 38884.0; Iterations: 11585299
+Temperature: 27.51386718406501; Cost: 37708.0; Iterations: 12638508
+Temperature: 22.01109374725201; Cost: 36491.0; Iterations: 13691717
+Temperature: 17.608874997801607; Cost: 34362.0; Iterations: 14744926
+Temperature: 14.087099998241285; Cost: 32915.0; Iterations: 15798135
+Temperature: 11.269679998593029; Cost: 29286.0; Iterations: 16851344
+Temperature: 9.015743998874424; Cost: 26956.0; Iterations: 17904553
+Temperature: 7.212595199099539; Cost: 24033.0; Iterations: 18957762
+Temperature: 5.770076159279632; Cost: 21563.0; Iterations: 20010971
+Temperature: 4.616060927423706; Cost: 20160.0; Iterations: 21064180
+Temperature: 3.692848741938965; Cost: 17925.0; Iterations: 22117389
+Temperature: 2.9542789935511724; Cost: 16386.0; Iterations: 23170598
+Temperature: 2.363423194840938; Cost: 14821.0; Iterations: 24223807
+Temperature: 1.8907385558727505; Cost: 14020.0; Iterations: 25277016
+Temperature: 1.5125908446982006; Cost: 12898.0; Iterations: 26330225
+Temperature: 1.2100726757585605; Cost: 12314.0; Iterations: 27383434
+Temperature: 0.9680581406068485; Cost: 11794.0; Iterations: 28436643
+Temperature: 0.7744465124854788; Cost: 11297.0; Iterations: 29489852
+Temperature: 0.619557209988383; Cost: 10918.0; Iterations: 30543061
+Temperature: 0.4956457679907065; Cost: 10669.0; Iterations: 31596270
+Temperature: 0.3965166143925652; Cost: 10472.0; Iterations: 32649479
+Temperature: 0.3172132915140522; Cost: 10313.0; Iterations: 33702688
+Temperature: 0.25377063321124177; Cost: 10213.0; Iterations: 34755897
+Temperature: 0.20301650656899342; Cost: 10146.0; Iterations: 35809106
+Temperature: 0.16241320525519476; Cost: 10091.0; Iterations: 36862315
+Temperature: 0.1299305642041558; Cost: 10053.0; Iterations: 37915524
+Final cost: 10053.0
+Total iterations: 37915524
+Took 2808.4761695861816
+Running: apex4.txt-0.8-20-25
+1400
+Initial temperature: 800.7589257341169
+Temperature: 640.6071405872935; Cost: 43140.0; Iterations: 351070
+Temperature: 512.4857124698349; Cost: 43398.0; Iterations: 702140
+Temperature: 409.9885699758679; Cost: 42926.0; Iterations: 1053210
+Temperature: 327.99085598069433; Cost: 43622.0; Iterations: 1404280
+Temperature: 262.39268478455546; Cost: 43557.0; Iterations: 1755350
+Temperature: 209.91414782764437; Cost: 42370.0; Iterations: 2106420
+Temperature: 167.9313182621155; Cost: 42594.0; Iterations: 2457490
+Temperature: 134.3450546096924; Cost: 42731.0; Iterations: 2808560
+Temperature: 107.47604368775393; Cost: 41982.0; Iterations: 3159630
+Temperature: 85.98083495020315; Cost: 41766.0; Iterations: 3510700
+Temperature: 68.78466796016252; Cost: 40378.0; Iterations: 3861770
+Temperature: 55.02773436813002; Cost: 40190.0; Iterations: 4212840
+Temperature: 44.02218749450402; Cost: 39724.0; Iterations: 4563910
+Temperature: 35.217749995603214; Cost: 38940.0; Iterations: 4914980
+Temperature: 28.17419999648257; Cost: 37900.0; Iterations: 5266050
+Temperature: 22.539359997186057; Cost: 35916.0; Iterations: 5617120
+Temperature: 18.031487997748847; Cost: 34605.0; Iterations: 5968190
+Temperature: 14.425190398199078; Cost: 32820.0; Iterations: 6319260
+Temperature: 11.540152318559263; Cost: 29813.0; Iterations: 6670330
+Temperature: 9.232121854847412; Cost: 26917.0; Iterations: 7021400
+Temperature: 7.38569748387793; Cost: 24204.0; Iterations: 7372470
+Temperature: 5.908557987102345; Cost: 22750.0; Iterations: 7723540
+Temperature: 4.726846389681876; Cost: 20120.0; Iterations: 8074610
+Temperature: 3.781477111745501; Cost: 18417.0; Iterations: 8425680
+Temperature: 3.025181689396401; Cost: 16849.0; Iterations: 8776750
+Temperature: 2.420145351517121; Cost: 15313.0; Iterations: 9127820
+Temperature: 1.936116281213697; Cost: 14267.0; Iterations: 9478890
+Temperature: 1.5488930249709576; Cost: 13347.0; Iterations: 9829960
+Temperature: 1.239114419976766; Cost: 12608.0; Iterations: 10181030
+Temperature: 0.991291535981413; Cost: 11982.0; Iterations: 10532100
+Temperature: 0.7930332287851304; Cost: 11658.0; Iterations: 10883170
+Temperature: 0.6344265830281044; Cost: 11364.0; Iterations: 11234240
+Temperature: 0.5075412664224835; Cost: 11074.0; Iterations: 11585310
+Temperature: 0.40603301313798684; Cost: 10893.0; Iterations: 11936380
+Temperature: 0.3248264105103895; Cost: 10764.0; Iterations: 12287450
+Temperature: 0.2598611284083116; Cost: 10644.0; Iterations: 12638520
+Temperature: 0.20788890272664928; Cost: 10561.0; Iterations: 12989590
+Temperature: 0.16631112218131944; Cost: 10496.0; Iterations: 13340660
+Temperature: 0.13304889774505554; Cost: 10434.0; Iterations: 13691730
+Temperature: 0.10643911819604444; Cost: 10401.0; Iterations: 14042800
+Final cost: 10401.0
+Total iterations: 14042800
+Took 1038.9400885105133
+Running: apex4.txt-0.8-20-50
+1400
+Initial temperature: 800.7589257341169
+Temperature: 640.6071405872935; Cost: 43308.0; Iterations: 702139
+Temperature: 512.4857124698349; Cost: 43466.0; Iterations: 1404278
+Temperature: 409.9885699758679; Cost: 43056.0; Iterations: 2106417
+Temperature: 327.99085598069433; Cost: 43899.0; Iterations: 2808556
+Temperature: 262.39268478455546; Cost: 43139.0; Iterations: 3510695
+Temperature: 209.91414782764437; Cost: 41821.0; Iterations: 4212834
+Temperature: 167.9313182621155; Cost: 41956.0; Iterations: 4914973
+Temperature: 134.3450546096924; Cost: 42349.0; Iterations: 5617112
+Temperature: 107.47604368775393; Cost: 41407.0; Iterations: 6319251
+Temperature: 85.98083495020315; Cost: 41752.0; Iterations: 7021390
+Temperature: 68.78466796016252; Cost: 41232.0; Iterations: 7723529
+Temperature: 55.02773436813002; Cost: 40438.0; Iterations: 8425668
+Temperature: 44.02218749450402; Cost: 39206.0; Iterations: 9127807
+Temperature: 35.217749995603214; Cost: 38817.0; Iterations: 9829946
+Temperature: 28.17419999648257; Cost: 37569.0; Iterations: 10532085
+Temperature: 22.539359997186057; Cost: 36325.0; Iterations: 11234224
+Temperature: 18.031487997748847; Cost: 34465.0; Iterations: 11936363
+Temperature: 14.425190398199078; Cost: 32575.0; Iterations: 12638502
+Temperature: 11.540152318559263; Cost: 30276.0; Iterations: 13340641
+Temperature: 9.232121854847412; Cost: 27398.0; Iterations: 14042780
+Temperature: 7.38569748387793; Cost: 24597.0; Iterations: 14744919
+Temperature: 5.908557987102345; Cost: 21895.0; Iterations: 15447058
+Temperature: 4.726846389681876; Cost: 20222.0; Iterations: 16149197
+Temperature: 3.781477111745501; Cost: 18315.0; Iterations: 16851336
+Temperature: 3.025181689396401; Cost: 16463.0; Iterations: 17553475
+Temperature: 2.420145351517121; Cost: 15066.0; Iterations: 18255614
+Temperature: 1.936116281213697; Cost: 14118.0; Iterations: 18957753
+Temperature: 1.5488930249709576; Cost: 13116.0; Iterations: 19659892
+Temperature: 1.239114419976766; Cost: 12457.0; Iterations: 20362031
+Temperature: 0.991291535981413; Cost: 12037.0; Iterations: 21064170
+Temperature: 0.7930332287851304; Cost: 11526.0; Iterations: 21766309
+Temperature: 0.6344265830281044; Cost: 11227.0; Iterations: 22468448
+Temperature: 0.5075412664224835; Cost: 10924.0; Iterations: 23170587
+Temperature: 0.40603301313798684; Cost: 10735.0; Iterations: 23872726
+Temperature: 0.3248264105103895; Cost: 10593.0; Iterations: 24574865
+Temperature: 0.2598611284083116; Cost: 10484.0; Iterations: 25277004
+Temperature: 0.20788890272664928; Cost: 10404.0; Iterations: 25979143
+Temperature: 0.16631112218131944; Cost: 10335.0; Iterations: 26681282
+Temperature: 0.13304889774505554; Cost: 10293.0; Iterations: 27383421
+Final cost: 10293.0
+Total iterations: 27383421
+Took 2035.1039836406708
+Running: apex4.txt-0.8-20-75
+1400
+Initial temperature: 800.7589257341169
+Temperature: 640.6071405872935; Cost: 43313.0; Iterations: 1053209
+Temperature: 512.4857124698349; Cost: 43198.0; Iterations: 2106418
+Temperature: 409.9885699758679; Cost: 43170.0; Iterations: 3159627
+Temperature: 327.99085598069433; Cost: 42289.0; Iterations: 4212836
+Temperature: 262.39268478455546; Cost: 43475.0; Iterations: 5266045
+Temperature: 209.91414782764437; Cost: 42303.0; Iterations: 6319254
+Temperature: 167.9313182621155; Cost: 43156.0; Iterations: 7372463
+Temperature: 134.3450546096924; Cost: 42104.0; Iterations: 8425672
+Temperature: 107.47604368775393; Cost: 41268.0; Iterations: 9478881
+Temperature: 85.98083495020315; Cost: 40828.0; Iterations: 10532090
+Temperature: 68.78466796016252; Cost: 40770.0; Iterations: 11585299
+Temperature: 55.02773436813002; Cost: 41045.0; Iterations: 12638508
+Temperature: 44.02218749450402; Cost: 39262.0; Iterations: 13691717
+Temperature: 35.217749995603214; Cost: 38562.0; Iterations: 14744926
+Temperature: 28.17419999648257; Cost: 37365.0; Iterations: 15798135
+Temperature: 22.539359997186057; Cost: 37256.0; Iterations: 16851344
+Temperature: 18.031487997748847; Cost: 34665.0; Iterations: 17904553
+Temperature: 14.425190398199078; Cost: 32670.0; Iterations: 18957762
+Temperature: 11.540152318559263; Cost: 29635.0; Iterations: 20010971
+Temperature: 9.232121854847412; Cost: 27710.0; Iterations: 21064180
+Temperature: 7.38569748387793; Cost: 24478.0; Iterations: 22117389
+Temperature: 5.908557987102345; Cost: 22249.0; Iterations: 23170598
+Temperature: 4.726846389681876; Cost: 20504.0; Iterations: 24223807
+Temperature: 3.781477111745501; Cost: 18245.0; Iterations: 25277016
+Temperature: 3.025181689396401; Cost: 16511.0; Iterations: 26330225
+Temperature: 2.420145351517121; Cost: 14921.0; Iterations: 27383434
+Temperature: 1.936116281213697; Cost: 13904.0; Iterations: 28436643
+Temperature: 1.5488930249709576; Cost: 13155.0; Iterations: 29489852
+Temperature: 1.239114419976766; Cost: 12296.0; Iterations: 30543061
+Temperature: 0.991291535981413; Cost: 11759.0; Iterations: 31596270
+Temperature: 0.7930332287851304; Cost: 11304.0; Iterations: 32649479
+Temperature: 0.6344265830281044; Cost: 10927.0; Iterations: 33702688
+Temperature: 0.5075412664224835; Cost: 10646.0; Iterations: 34755897
+Temperature: 0.40603301313798684; Cost: 10446.0; Iterations: 35809106
+Temperature: 0.3248264105103895; Cost: 10295.0; Iterations: 36862315
+Temperature: 0.2598611284083116; Cost: 10213.0; Iterations: 37915524
+Temperature: 0.20788890272664928; Cost: 10135.0; Iterations: 38968733
+Temperature: 0.16631112218131944; Cost: 10082.0; Iterations: 40021942
+Temperature: 0.13304889774505554; Cost: 10052.0; Iterations: 41075151
+Final cost: 10052.0
+Total iterations: 41075151
+Took 3199.5267894268036
+Running: apex4.txt-0.8-30-25
+1400
+Initial temperature: 1201.1383886011754
+Temperature: 960.9107108809403; Cost: 43371.0; Iterations: 351070
+Temperature: 768.7285687047523; Cost: 43502.0; Iterations: 702140
+Temperature: 614.9828549638019; Cost: 43416.0; Iterations: 1053210
+Temperature: 491.98628397104153; Cost: 43990.0; Iterations: 1404280
+Temperature: 393.58902717683327; Cost: 43261.0; Iterations: 1755350
+Temperature: 314.8712217414666; Cost: 42627.0; Iterations: 2106420
+Temperature: 251.8969773931733; Cost: 43119.0; Iterations: 2457490
+Temperature: 201.51758191453865; Cost: 43396.0; Iterations: 2808560
+Temperature: 161.21406553163092; Cost: 42492.0; Iterations: 3159630
+Temperature: 128.97125242530475; Cost: 42789.0; Iterations: 3510700
+Temperature: 103.17700194024381; Cost: 42335.0; Iterations: 3861770
+Temperature: 82.54160155219506; Cost: 40755.0; Iterations: 4212840
+Temperature: 66.03328124175606; Cost: 41424.0; Iterations: 4563910
+Temperature: 52.82662499340485; Cost: 39539.0; Iterations: 4914980
+Temperature: 42.261299994723885; Cost: 39426.0; Iterations: 5266050
+Temperature: 33.80903999577911; Cost: 38019.0; Iterations: 5617120
+Temperature: 27.04723199662329; Cost: 37189.0; Iterations: 5968190
+Temperature: 21.63778559729863; Cost: 35952.0; Iterations: 6319260
+Temperature: 17.310228477838905; Cost: 34053.0; Iterations: 6670330
+Temperature: 13.848182782271124; Cost: 32546.0; Iterations: 7021400
+Temperature: 11.0785462258169; Cost: 29251.0; Iterations: 7372470
+Temperature: 8.86283698065352; Cost: 26813.0; Iterations: 7723540
+Temperature: 7.090269584522817; Cost: 24169.0; Iterations: 8074610
+Temperature: 5.672215667618254; Cost: 21610.0; Iterations: 8425680
+Temperature: 4.537772534094603; Cost: 19602.0; Iterations: 8776750
+Temperature: 3.6302180272756823; Cost: 17805.0; Iterations: 9127820
+Temperature: 2.904174421820546; Cost: 16507.0; Iterations: 9478890
+Temperature: 2.323339537456437; Cost: 14961.0; Iterations: 9829960
+Temperature: 1.8586716299651496; Cost: 13848.0; Iterations: 10181030
+Temperature: 1.4869373039721197; Cost: 13142.0; Iterations: 10532100
+Temperature: 1.1895498431776959; Cost: 12448.0; Iterations: 10883170
+Temperature: 0.9516398745421567; Cost: 11962.0; Iterations: 11234240
+Temperature: 0.7613118996337254; Cost: 11483.0; Iterations: 11585310
+Temperature: 0.6090495197069803; Cost: 11153.0; Iterations: 11936380
+Temperature: 0.4872396157655843; Cost: 10914.0; Iterations: 12287450
+Temperature: 0.38979169261246743; Cost: 10765.0; Iterations: 12638520
+Temperature: 0.311833354089974; Cost: 10636.0; Iterations: 12989590
+Temperature: 0.24946668327197918; Cost: 10534.0; Iterations: 13340660
+Temperature: 0.19957334661758336; Cost: 10458.0; Iterations: 13691730
+Temperature: 0.1596586772940667; Cost: 10402.0; Iterations: 14042800
+Temperature: 0.12772694183525335; Cost: 10357.0; Iterations: 14393870
+Final cost: 10357.0
+Total iterations: 14393870
+Took 1102.4730560779572
+Running: apex4.txt-0.8-30-50
+1400
+Initial temperature: 1201.1383886011754
+Temperature: 960.9107108809403; Cost: 43309.0; Iterations: 702139
+Temperature: 768.7285687047523; Cost: 43504.0; Iterations: 1404278
+Temperature: 614.9828549638019; Cost: 43860.0; Iterations: 2106417
+Temperature: 491.98628397104153; Cost: 43335.0; Iterations: 2808556
+Temperature: 393.58902717683327; Cost: 43348.0; Iterations: 3510695
+Temperature: 314.8712217414666; Cost: 41956.0; Iterations: 4212834
+Temperature: 251.8969773931733; Cost: 41996.0; Iterations: 4914973
+Temperature: 201.51758191453865; Cost: 43043.0; Iterations: 5617112
+Temperature: 161.21406553163092; Cost: 42124.0; Iterations: 6319251
+Temperature: 128.97125242530475; Cost: 42423.0; Iterations: 7021390
+Temperature: 103.17700194024381; Cost: 42392.0; Iterations: 7723529
+Temperature: 82.54160155219506; Cost: 41290.0; Iterations: 8425668
+Temperature: 66.03328124175606; Cost: 40770.0; Iterations: 9127807
+Temperature: 52.82662499340485; Cost: 40019.0; Iterations: 9829946
+Temperature: 42.261299994723885; Cost: 38774.0; Iterations: 10532085
+Temperature: 33.80903999577911; Cost: 39340.0; Iterations: 11234224
+Temperature: 27.04723199662329; Cost: 37326.0; Iterations: 11936363
+Temperature: 21.63778559729863; Cost: 36062.0; Iterations: 12638502
+Temperature: 17.310228477838905; Cost: 34969.0; Iterations: 13340641
+Temperature: 13.848182782271124; Cost: 32879.0; Iterations: 14042780
+Temperature: 11.0785462258169; Cost: 28894.0; Iterations: 14744919
+Temperature: 8.86283698065352; Cost: 26595.0; Iterations: 15447058
+Temperature: 7.090269584522817; Cost: 24059.0; Iterations: 16149197
+Temperature: 5.672215667618254; Cost: 22165.0; Iterations: 16851336
+Temperature: 4.537772534094603; Cost: 19860.0; Iterations: 17553475
+Temperature: 3.6302180272756823; Cost: 17743.0; Iterations: 18255614
+Temperature: 2.904174421820546; Cost: 16265.0; Iterations: 18957753
+Temperature: 2.323339537456437; Cost: 14854.0; Iterations: 19659892
+Temperature: 1.8586716299651496; Cost: 13763.0; Iterations: 20362031
+Temperature: 1.4869373039721197; Cost: 12966.0; Iterations: 21064170
+Temperature: 1.1895498431776959; Cost: 12177.0; Iterations: 21766309
+Temperature: 0.9516398745421567; Cost: 11722.0; Iterations: 22468448
+Temperature: 0.7613118996337254; Cost: 11368.0; Iterations: 23170587
+Temperature: 0.6090495197069803; Cost: 11032.0; Iterations: 23872726
+Temperature: 0.4872396157655843; Cost: 10775.0; Iterations: 24574865
+Temperature: 0.38979169261246743; Cost: 10544.0; Iterations: 25277004
+Temperature: 0.311833354089974; Cost: 10396.0; Iterations: 25979143
+Temperature: 0.24946668327197918; Cost: 10296.0; Iterations: 26681282
+Temperature: 0.19957334661758336; Cost: 10216.0; Iterations: 27383421
+Temperature: 0.1596586772940667; Cost: 10163.0; Iterations: 28085560
+Temperature: 0.12772694183525335; Cost: 10130.0; Iterations: 28787699
+Final cost: 10130.0
+Total iterations: 28787699
+Took 2192.6580448150635
+Running: apex4.txt-0.8-30-75
+1400
+Initial temperature: 1201.1383886011754
+Temperature: 960.9107108809403; Cost: 43464.0; Iterations: 1053209
+Temperature: 768.7285687047523; Cost: 43746.0; Iterations: 2106418
+Temperature: 614.9828549638019; Cost: 43422.0; Iterations: 3159627
+Temperature: 491.98628397104153; Cost: 42625.0; Iterations: 4212836
+Temperature: 393.58902717683327; Cost: 43843.0; Iterations: 5266045
+Temperature: 314.8712217414666; Cost: 42859.0; Iterations: 6319254
+Temperature: 251.8969773931733; Cost: 44357.0; Iterations: 7372463
+Temperature: 201.51758191453865; Cost: 42735.0; Iterations: 8425672
+Temperature: 161.21406553163092; Cost: 42373.0; Iterations: 9478881
+Temperature: 128.97125242530475; Cost: 41984.0; Iterations: 10532090
+Temperature: 103.17700194024381; Cost: 41773.0; Iterations: 11585299
+Temperature: 82.54160155219506; Cost: 41905.0; Iterations: 12638508
+Temperature: 66.03328124175606; Cost: 40912.0; Iterations: 13691717
+Temperature: 52.82662499340485; Cost: 40293.0; Iterations: 14744926
+Temperature: 42.261299994723885; Cost: 39564.0; Iterations: 15798135
+Temperature: 33.80903999577911; Cost: 38548.0; Iterations: 16851344
+Temperature: 27.04723199662329; Cost: 37184.0; Iterations: 17904553
+Temperature: 21.63778559729863; Cost: 36018.0; Iterations: 18957762
+Temperature: 17.310228477838905; Cost: 33794.0; Iterations: 20010971
+Temperature: 13.848182782271124; Cost: 32570.0; Iterations: 21064180
+Temperature: 11.0785462258169; Cost: 30642.0; Iterations: 22117389
+Temperature: 8.86283698065352; Cost: 26661.0; Iterations: 23170598
+Temperature: 7.090269584522817; Cost: 24405.0; Iterations: 24223807
+Temperature: 5.672215667618254; Cost: 21886.0; Iterations: 25277016
+Temperature: 4.537772534094603; Cost: 19995.0; Iterations: 26330225
+Temperature: 3.6302180272756823; Cost: 17723.0; Iterations: 27383434
+Temperature: 2.904174421820546; Cost: 16154.0; Iterations: 28436643
+Temperature: 2.323339537456437; Cost: 15127.0; Iterations: 29489852
+Temperature: 1.8586716299651496; Cost: 13648.0; Iterations: 30543061
+Temperature: 1.4869373039721197; Cost: 12980.0; Iterations: 31596270
+Temperature: 1.1895498431776959; Cost: 12258.0; Iterations: 32649479
+Temperature: 0.9516398745421567; Cost: 11773.0; Iterations: 33702688
+Temperature: 0.7613118996337254; Cost: 11309.0; Iterations: 34755897
+Temperature: 0.6090495197069803; Cost: 10951.0; Iterations: 35809106
+Temperature: 0.4872396157655843; Cost: 10768.0; Iterations: 36862315
+Temperature: 0.38979169261246743; Cost: 10529.0; Iterations: 37915524
+Temperature: 0.311833354089974; Cost: 10407.0; Iterations: 38968733
+Temperature: 0.24946668327197918; Cost: 10290.0; Iterations: 40021942
+Temperature: 0.19957334661758336; Cost: 10210.0; Iterations: 41075151
+Temperature: 0.1596586772940667; Cost: 10171.0; Iterations: 42128360
+Final cost: 10171.0
+Total iterations: 42128360
+Took 3211.2344603538513
+Running: apex4.txt-0.85-10-25
+1400
+Initial temperature: 400.37946286705846
+Temperature: 340.3225434369997; Cost: 42718.0; Iterations: 351070
+Temperature: 289.2741619214497; Cost: 43096.0; Iterations: 702140
+Temperature: 245.88303763323225; Cost: 42771.0; Iterations: 1053210
+Temperature: 209.0005819882474; Cost: 42767.0; Iterations: 1404280
+Temperature: 177.65049469001028; Cost: 42728.0; Iterations: 1755350
+Temperature: 151.00292048650874; Cost: 41992.0; Iterations: 2106420
+Temperature: 128.3524824135324; Cost: 42023.0; Iterations: 2457490
+Temperature: 109.09961005150255; Cost: 41935.0; Iterations: 2808560
+Temperature: 92.73466854377716; Cost: 41208.0; Iterations: 3159630
+Temperature: 78.82446826221059; Cost: 41827.0; Iterations: 3510700
+Temperature: 67.000798022879; Cost: 41405.0; Iterations: 3861770
+Temperature: 56.95067831944714; Cost: 40387.0; Iterations: 4212840
+Temperature: 48.40807657153007; Cost: 39575.0; Iterations: 4563910
+Temperature: 41.146865085800556; Cost: 39070.0; Iterations: 4914980
+Temperature: 34.974835322930474; Cost: 38169.0; Iterations: 5266050
+Temperature: 29.7286100244909; Cost: 37485.0; Iterations: 5617120
+Temperature: 25.269318520817265; Cost: 36302.0; Iterations: 5968190
+Temperature: 21.478920742694676; Cost: 35902.0; Iterations: 6319260
+Temperature: 18.257082631290473; Cost: 34402.0; Iterations: 6670330
+Temperature: 15.5185202365969; Cost: 33302.0; Iterations: 7021400
+Temperature: 13.190742201107366; Cost: 30586.0; Iterations: 7372470
+Temperature: 11.21213087094126; Cost: 28952.0; Iterations: 7723540
+Temperature: 9.53031124030007; Cost: 27027.0; Iterations: 8074610
+Temperature: 8.10076455425506; Cost: 24514.0; Iterations: 8425680
+Temperature: 6.8856498711168; Cost: 23157.0; Iterations: 8776750
+Temperature: 5.85280239044928; Cost: 21485.0; Iterations: 9127820
+Temperature: 4.974882031881887; Cost: 19911.0; Iterations: 9478890
+Temperature: 4.228649727099604; Cost: 18449.0; Iterations: 9829960
+Temperature: 3.5943522680346636; Cost: 17202.0; Iterations: 10181030
+Temperature: 3.055199427829464; Cost: 15995.0; Iterations: 10532100
+Temperature: 2.596919513655044; Cost: 15338.0; Iterations: 10883170
+Temperature: 2.2073815866067874; Cost: 14653.0; Iterations: 11234240
+Temperature: 1.8762743486157691; Cost: 13825.0; Iterations: 11585310
+Temperature: 1.5948331963234037; Cost: 13138.0; Iterations: 11936380
+Temperature: 1.355608216874893; Cost: 12779.0; Iterations: 12287450
+Temperature: 1.152266984343659; Cost: 12323.0; Iterations: 12638520
+Temperature: 0.9794269366921101; Cost: 11889.0; Iterations: 12989590
+Temperature: 0.8325128961882936; Cost: 11605.0; Iterations: 13340660
+Temperature: 0.7076359617600495; Cost: 11363.0; Iterations: 13691730
+Temperature: 0.601490567496042; Cost: 11145.0; Iterations: 14042800
+Temperature: 0.5112669823716357; Cost: 10937.0; Iterations: 14393870
+Temperature: 0.43457693501589034; Cost: 10770.0; Iterations: 14744940
+Temperature: 0.36939039476350677; Cost: 10647.0; Iterations: 15096010
+Temperature: 0.31398183554898074; Cost: 10561.0; Iterations: 15447080
+Temperature: 0.2668845602166336; Cost: 10510.0; Iterations: 15798150
+Final cost: 10510.0
+Total iterations: 15798150
+Took 1182.7218430042267
+Running: apex4.txt-0.85-10-50
+1400
+Initial temperature: 400.37946286705846
+Temperature: 340.3225434369997; Cost: 43290.0; Iterations: 702139
+Temperature: 289.2741619214497; Cost: 43428.0; Iterations: 1404278
+Temperature: 245.88303763323225; Cost: 42912.0; Iterations: 2106417
+Temperature: 209.0005819882474; Cost: 43318.0; Iterations: 2808556
+Temperature: 177.65049469001028; Cost: 42420.0; Iterations: 3510695
+Temperature: 151.00292048650874; Cost: 40606.0; Iterations: 4212834
+Temperature: 128.3524824135324; Cost: 41526.0; Iterations: 4914973
+Temperature: 109.09961005150255; Cost: 42235.0; Iterations: 5617112
+Temperature: 92.73466854377716; Cost: 41722.0; Iterations: 6319251
+Temperature: 78.82446826221059; Cost: 41573.0; Iterations: 7021390
+Temperature: 67.000798022879; Cost: 41122.0; Iterations: 7723529
+Temperature: 56.95067831944714; Cost: 40055.0; Iterations: 8425668
+Temperature: 48.40807657153007; Cost: 39932.0; Iterations: 9127807
+Temperature: 41.146865085800556; Cost: 38830.0; Iterations: 9829946
+Temperature: 34.974835322930474; Cost: 37839.0; Iterations: 10532085
+Temperature: 29.7286100244909; Cost: 37636.0; Iterations: 11234224
+Temperature: 25.269318520817265; Cost: 36429.0; Iterations: 11936363
+Temperature: 21.478920742694676; Cost: 34824.0; Iterations: 12638502
+Temperature: 18.257082631290473; Cost: 34422.0; Iterations: 13340641
+Temperature: 15.5185202365969; Cost: 32155.0; Iterations: 14042780
+Temperature: 13.190742201107366; Cost: 31128.0; Iterations: 14744919
+Temperature: 11.21213087094126; Cost: 28078.0; Iterations: 15447058
+Temperature: 9.53031124030007; Cost: 27021.0; Iterations: 16149197
+Temperature: 8.10076455425506; Cost: 24893.0; Iterations: 16851336
+Temperature: 6.8856498711168; Cost: 23436.0; Iterations: 17553475
+Temperature: 5.85280239044928; Cost: 21010.0; Iterations: 18255614
+Temperature: 4.974882031881887; Cost: 20417.0; Iterations: 18957753
+Temperature: 4.228649727099604; Cost: 18608.0; Iterations: 19659892
+Temperature: 3.5943522680346636; Cost: 17081.0; Iterations: 20362031
+Temperature: 3.055199427829464; Cost: 16010.0; Iterations: 21064170
+Temperature: 2.596919513655044; Cost: 15037.0; Iterations: 21766309
+Temperature: 2.2073815866067874; Cost: 14303.0; Iterations: 22468448
+Temperature: 1.8762743486157691; Cost: 13699.0; Iterations: 23170587
+Temperature: 1.5948331963234037; Cost: 12979.0; Iterations: 23872726
+Temperature: 1.355608216874893; Cost: 12379.0; Iterations: 24574865
+Temperature: 1.152266984343659; Cost: 12056.0; Iterations: 25277004
+Temperature: 0.9794269366921101; Cost: 11605.0; Iterations: 25979143
+Temperature: 0.8325128961882936; Cost: 11341.0; Iterations: 26681282
+Temperature: 0.7076359617600495; Cost: 11100.0; Iterations: 27383421
+Temperature: 0.601490567496042; Cost: 10901.0; Iterations: 28085560
+Temperature: 0.5112669823716357; Cost: 10658.0; Iterations: 28787699
+Temperature: 0.43457693501589034; Cost: 10489.0; Iterations: 29489838
+Temperature: 0.36939039476350677; Cost: 10356.0; Iterations: 30191977
+Temperature: 0.31398183554898074; Cost: 10258.0; Iterations: 30894116
+Temperature: 0.2668845602166336; Cost: 10183.0; Iterations: 31596255
+Temperature: 0.22685187618413855; Cost: 10118.0; Iterations: 32298394
+Temperature: 0.19282409475651777; Cost: 10085.0; Iterations: 33000533
+Final cost: 10085.0
+Total iterations: 33000533
+Took 2546.223869085312
+Running: apex4.txt-0.85-10-75
+1400
+Initial temperature: 400.37946286705846
+Temperature: 340.3225434369997; Cost: 43234.0; Iterations: 1053209
+Temperature: 289.2741619214497; Cost: 42962.0; Iterations: 2106418
+Temperature: 245.88303763323225; Cost: 43193.0; Iterations: 3159627
+Temperature: 209.0005819882474; Cost: 41722.0; Iterations: 4212836
+Temperature: 177.65049469001028; Cost: 42355.0; Iterations: 5266045
+Temperature: 151.00292048650874; Cost: 42258.0; Iterations: 6319254
+Temperature: 128.3524824135324; Cost: 43004.0; Iterations: 7372463
+Temperature: 109.09961005150255; Cost: 41169.0; Iterations: 8425672
+Temperature: 92.73466854377716; Cost: 41960.0; Iterations: 9478881
+Temperature: 78.82446826221059; Cost: 40785.0; Iterations: 10532090
+Temperature: 67.000798022879; Cost: 40905.0; Iterations: 11585299
+Temperature: 56.95067831944714; Cost: 40201.0; Iterations: 12638508
+Temperature: 48.40807657153007; Cost: 38276.0; Iterations: 13691717
+Temperature: 41.146865085800556; Cost: 37922.0; Iterations: 14744926
+Temperature: 34.974835322930474; Cost: 38308.0; Iterations: 15798135
+Temperature: 29.7286100244909; Cost: 38002.0; Iterations: 16851344
+Temperature: 25.269318520817265; Cost: 36154.0; Iterations: 17904553
+Temperature: 21.478920742694676; Cost: 35317.0; Iterations: 18957762
+Temperature: 18.257082631290473; Cost: 34500.0; Iterations: 20010971
+Temperature: 15.5185202365969; Cost: 32513.0; Iterations: 21064180
+Temperature: 13.190742201107366; Cost: 30483.0; Iterations: 22117389
+Temperature: 11.21213087094126; Cost: 29330.0; Iterations: 23170598
+Temperature: 9.53031124030007; Cost: 27006.0; Iterations: 24223807
+Temperature: 8.10076455425506; Cost: 24792.0; Iterations: 25277016
+Temperature: 6.8856498711168; Cost: 23228.0; Iterations: 26330225
+Temperature: 5.85280239044928; Cost: 21298.0; Iterations: 27383434
+Temperature: 4.974882031881887; Cost: 19770.0; Iterations: 28436643
+Temperature: 4.228649727099604; Cost: 18361.0; Iterations: 29489852
+Temperature: 3.5943522680346636; Cost: 17185.0; Iterations: 30543061
+Temperature: 3.055199427829464; Cost: 16025.0; Iterations: 31596270
+Temperature: 2.596919513655044; Cost: 15160.0; Iterations: 32649479
+Temperature: 2.2073815866067874; Cost: 14402.0; Iterations: 33702688
+Temperature: 1.8762743486157691; Cost: 13787.0; Iterations: 34755897
+Temperature: 1.5948331963234037; Cost: 13080.0; Iterations: 35809106
+Temperature: 1.355608216874893; Cost: 12633.0; Iterations: 36862315
+Temperature: 1.152266984343659; Cost: 12141.0; Iterations: 37915524
+Temperature: 0.9794269366921101; Cost: 11630.0; Iterations: 38968733
+Temperature: 0.8325128961882936; Cost: 11363.0; Iterations: 40021942
+Temperature: 0.7076359617600495; Cost: 11071.0; Iterations: 41075151
+Temperature: 0.601490567496042; Cost: 10806.0; Iterations: 42128360
+Temperature: 0.5112669823716357; Cost: 10620.0; Iterations: 43181569
+Temperature: 0.43457693501589034; Cost: 10479.0; Iterations: 44234778
+Temperature: 0.36939039476350677; Cost: 10370.0; Iterations: 45287987
+Temperature: 0.31398183554898074; Cost: 10270.0; Iterations: 46341196
+Temperature: 0.2668845602166336; Cost: 10206.0; Iterations: 47394405
+Temperature: 0.22685187618413855; Cost: 10167.0; Iterations: 48447614
+Final cost: 10167.0
+Total iterations: 48447614
+Took 3746.537137746811
+Running: apex4.txt-0.85-20-25
+1400
+Initial temperature: 800.7589257341169
+Temperature: 680.6450868739994; Cost: 43140.0; Iterations: 351070
+Temperature: 578.5483238428994; Cost: 43703.0; Iterations: 702140
+Temperature: 491.7660752664645; Cost: 43025.0; Iterations: 1053210
+Temperature: 418.0011639764948; Cost: 43434.0; Iterations: 1404280
+Temperature: 355.30098938002055; Cost: 43552.0; Iterations: 1755350
+Temperature: 302.0058409730175; Cost: 42923.0; Iterations: 2106420
+Temperature: 256.7049648270648; Cost: 43088.0; Iterations: 2457490
+Temperature: 218.1992201030051; Cost: 44115.0; Iterations: 2808560
+Temperature: 185.46933708755432; Cost: 42191.0; Iterations: 3159630
+Temperature: 157.64893652442117; Cost: 42364.0; Iterations: 3510700
+Temperature: 134.001596045758; Cost: 42055.0; Iterations: 3861770
+Temperature: 113.90135663889428; Cost: 40922.0; Iterations: 4212840
+Temperature: 96.81615314306013; Cost: 41508.0; Iterations: 4563910
+Temperature: 82.29373017160111; Cost: 40881.0; Iterations: 4914980
+Temperature: 69.94967064586095; Cost: 40919.0; Iterations: 5266050
+Temperature: 59.4572200489818; Cost: 40860.0; Iterations: 5617120
+Temperature: 50.53863704163453; Cost: 39245.0; Iterations: 5968190
+Temperature: 42.95784148538935; Cost: 39135.0; Iterations: 6319260
+Temperature: 36.514165262580946; Cost: 38045.0; Iterations: 6670330
+Temperature: 31.0370404731938; Cost: 37544.0; Iterations: 7021400
+Temperature: 26.38148440221473; Cost: 36205.0; Iterations: 7372470
+Temperature: 22.42426174188252; Cost: 35476.0; Iterations: 7723540
+Temperature: 19.06062248060014; Cost: 34883.0; Iterations: 8074610
+Temperature: 16.20152910851012; Cost: 32326.0; Iterations: 8425680
+Temperature: 13.7712997422336; Cost: 30953.0; Iterations: 8776750
+Temperature: 11.70560478089856; Cost: 29153.0; Iterations: 9127820
+Temperature: 9.949764063763775; Cost: 27712.0; Iterations: 9478890
+Temperature: 8.457299454199209; Cost: 25707.0; Iterations: 9829960
+Temperature: 7.188704536069327; Cost: 23855.0; Iterations: 10181030
+Temperature: 6.110398855658928; Cost: 22097.0; Iterations: 10532100
+Temperature: 5.193839027310088; Cost: 20712.0; Iterations: 10883170
+Temperature: 4.414763173213575; Cost: 18629.0; Iterations: 11234240
+Temperature: 3.7525486972315383; Cost: 17374.0; Iterations: 11585310
+Temperature: 3.1896663926468074; Cost: 16434.0; Iterations: 11936380
+Temperature: 2.711216433749786; Cost: 15547.0; Iterations: 12287450
+Temperature: 2.304533968687318; Cost: 14497.0; Iterations: 12638520
+Temperature: 1.9588538733842202; Cost: 13803.0; Iterations: 12989590
+Temperature: 1.6650257923765872; Cost: 13190.0; Iterations: 13340660
+Temperature: 1.415271923520099; Cost: 12557.0; Iterations: 13691730
+Temperature: 1.202981134992084; Cost: 12104.0; Iterations: 14042800
+Temperature: 1.0225339647432714; Cost: 11767.0; Iterations: 14393870
+Temperature: 0.8691538700317807; Cost: 11454.0; Iterations: 14744940
+Temperature: 0.7387807895270135; Cost: 11278.0; Iterations: 15096010
+Temperature: 0.6279636710979615; Cost: 11016.0; Iterations: 15447080
+Temperature: 0.5337691204332672; Cost: 10845.0; Iterations: 15798150
+Temperature: 0.4537037523682771; Cost: 10684.0; Iterations: 16149220
+Temperature: 0.38564818951303553; Cost: 10607.0; Iterations: 16500290
+Temperature: 0.3278009610860802; Cost: 10496.0; Iterations: 16851360
+Temperature: 0.27863081692316816; Cost: 10398.0; Iterations: 17202430
+Temperature: 0.23683619438469292; Cost: 10324.0; Iterations: 17553500
+Temperature: 0.20131076522698899; Cost: 10269.0; Iterations: 17904570
+Temperature: 0.17111415044294062; Cost: 10218.0; Iterations: 18255640
+Final cost: 10218.0
+Total iterations: 18255640
+Took 1399.7981581687927
+Running: apex4.txt-0.85-20-50
+1400
+Initial temperature: 800.7589257341169
+Temperature: 680.6450868739994; Cost: 43308.0; Iterations: 702139
+Temperature: 578.5483238428994; Cost: 43781.0; Iterations: 1404278
+Temperature: 491.7660752664645; Cost: 43134.0; Iterations: 2106417
+Temperature: 418.0011639764948; Cost: 43751.0; Iterations: 2808556
+Temperature: 355.30098938002055; Cost: 43584.0; Iterations: 3510695
+Temperature: 302.0058409730175; Cost: 41781.0; Iterations: 4212834
+Temperature: 256.7049648270648; Cost: 42006.0; Iterations: 4914973
+Temperature: 218.1992201030051; Cost: 43107.0; Iterations: 5617112
+Temperature: 185.46933708755432; Cost: 42270.0; Iterations: 6319251
+Temperature: 157.64893652442117; Cost: 43324.0; Iterations: 7021390
+Temperature: 134.001596045758; Cost: 42265.0; Iterations: 7723529
+Temperature: 113.90135663889428; Cost: 41837.0; Iterations: 8425668
+Temperature: 96.81615314306013; Cost: 41628.0; Iterations: 9127807
+Temperature: 82.29373017160111; Cost: 41918.0; Iterations: 9829946
+Temperature: 69.94967064586095; Cost: 40990.0; Iterations: 10532085
+Temperature: 59.4572200489818; Cost: 40811.0; Iterations: 11234224
+Temperature: 50.53863704163453; Cost: 40266.0; Iterations: 11936363
+Temperature: 42.95784148538935; Cost: 40505.0; Iterations: 12638502
+Temperature: 36.514165262580946; Cost: 38510.0; Iterations: 13340641
+Temperature: 31.0370404731938; Cost: 38037.0; Iterations: 14042780
+Temperature: 26.38148440221473; Cost: 36454.0; Iterations: 14744919
+Temperature: 22.42426174188252; Cost: 35251.0; Iterations: 15447058
+Temperature: 19.06062248060014; Cost: 34851.0; Iterations: 16149197
+Temperature: 16.20152910851012; Cost: 33438.0; Iterations: 16851336
+Temperature: 13.7712997422336; Cost: 30986.0; Iterations: 17553475
+Temperature: 11.70560478089856; Cost: 29733.0; Iterations: 18255614
+Temperature: 9.949764063763775; Cost: 26723.0; Iterations: 18957753
+Temperature: 8.457299454199209; Cost: 25218.0; Iterations: 19659892
+Temperature: 7.188704536069327; Cost: 23424.0; Iterations: 20362031
+Temperature: 6.110398855658928; Cost: 22356.0; Iterations: 21064170
+Temperature: 5.193839027310088; Cost: 20469.0; Iterations: 21766309
+Temperature: 4.414763173213575; Cost: 19155.0; Iterations: 22468448
+Temperature: 3.7525486972315383; Cost: 17709.0; Iterations: 23170587
+Temperature: 3.1896663926468074; Cost: 16026.0; Iterations: 23872726
+Temperature: 2.711216433749786; Cost: 15552.0; Iterations: 24574865
+Temperature: 2.304533968687318; Cost: 14506.0; Iterations: 25277004
+Temperature: 1.9588538733842202; Cost: 13831.0; Iterations: 25979143
+Temperature: 1.6650257923765872; Cost: 13295.0; Iterations: 26681282
+Temperature: 1.415271923520099; Cost: 12654.0; Iterations: 27383421
+Temperature: 1.202981134992084; Cost: 12001.0; Iterations: 28085560
+Temperature: 1.0225339647432714; Cost: 11746.0; Iterations: 28787699
+Temperature: 0.8691538700317807; Cost: 11463.0; Iterations: 29489838
+Temperature: 0.7387807895270135; Cost: 11207.0; Iterations: 30191977
+Temperature: 0.6279636710979615; Cost: 10951.0; Iterations: 30894116
+Temperature: 0.5337691204332672; Cost: 10766.0; Iterations: 31596255
+Temperature: 0.4537037523682771; Cost: 10574.0; Iterations: 32298394
+Temperature: 0.38564818951303553; Cost: 10488.0; Iterations: 33000533
+Temperature: 0.3278009610860802; Cost: 10390.0; Iterations: 33702672
+Temperature: 0.27863081692316816; Cost: 10297.0; Iterations: 34404811
+Temperature: 0.23683619438469292; Cost: 10225.0; Iterations: 35106950
+Temperature: 0.20131076522698899; Cost: 10174.0; Iterations: 35809089
+Temperature: 0.17111415044294062; Cost: 10150.0; Iterations: 36511228
+Final cost: 10150.0
+Total iterations: 36511228
+Took 2792.4686317443848
+Running: apex4.txt-0.85-20-75
+1400
+Initial temperature: 800.7589257341169
+Temperature: 680.6450868739994; Cost: 43313.0; Iterations: 1053209
+Temperature: 578.5483238428994; Cost: 43675.0; Iterations: 2106418
+Temperature: 491.7660752664645; Cost: 43262.0; Iterations: 3159627
+Temperature: 418.0011639764948; Cost: 42868.0; Iterations: 4212836
+Temperature: 355.30098938002055; Cost: 43551.0; Iterations: 5266045
+Temperature: 302.0058409730175; Cost: 42889.0; Iterations: 6319254
+Temperature: 256.7049648270648; Cost: 44198.0; Iterations: 7372463
+Temperature: 218.1992201030051; Cost: 42382.0; Iterations: 8425672
+Temperature: 185.46933708755432; Cost: 42263.0; Iterations: 9478881
+Temperature: 157.64893652442117; Cost: 41814.0; Iterations: 10532090
+Temperature: 134.001596045758; Cost: 42270.0; Iterations: 11585299
+Temperature: 113.90135663889428; Cost: 42319.0; Iterations: 12638508
+Temperature: 96.81615314306013; Cost: 41160.0; Iterations: 13691717
+Temperature: 82.29373017160111; Cost: 40872.0; Iterations: 14744926
+Temperature: 69.94967064586095; Cost: 40406.0; Iterations: 15798135
+Temperature: 59.4572200489818; Cost: 40072.0; Iterations: 16851344
+Temperature: 50.53863704163453; Cost: 39876.0; Iterations: 17904553
+Temperature: 42.95784148538935; Cost: 39022.0; Iterations: 18957762
+Temperature: 36.514165262580946; Cost: 38275.0; Iterations: 20010971
+Temperature: 31.0370404731938; Cost: 38564.0; Iterations: 21064180
+Temperature: 26.38148440221473; Cost: 36760.0; Iterations: 22117389
+Temperature: 22.42426174188252; Cost: 36184.0; Iterations: 23170598
+Temperature: 19.06062248060014; Cost: 34065.0; Iterations: 24223807
+Temperature: 16.20152910851012; Cost: 33479.0; Iterations: 25277016
+Temperature: 13.7712997422336; Cost: 30877.0; Iterations: 26330225
+Temperature: 11.70560478089856; Cost: 29212.0; Iterations: 27383434
+Temperature: 9.949764063763775; Cost: 27192.0; Iterations: 28436643
+Temperature: 8.457299454199209; Cost: 25828.0; Iterations: 29489852
+Temperature: 7.188704536069327; Cost: 23708.0; Iterations: 30543061
+Temperature: 6.110398855658928; Cost: 21697.0; Iterations: 31596270
+Temperature: 5.193839027310088; Cost: 20477.0; Iterations: 32649479
+Temperature: 4.414763173213575; Cost: 18628.0; Iterations: 33702688
+Temperature: 3.7525486972315383; Cost: 17428.0; Iterations: 34755897
+Temperature: 3.1896663926468074; Cost: 16119.0; Iterations: 35809106
+Temperature: 2.711216433749786; Cost: 15484.0; Iterations: 36862315
+Temperature: 2.304533968687318; Cost: 14228.0; Iterations: 37915524
+Temperature: 1.9588538733842202; Cost: 13650.0; Iterations: 38968733
+Temperature: 1.6650257923765872; Cost: 13081.0; Iterations: 40021942
+Temperature: 1.415271923520099; Cost: 12583.0; Iterations: 41075151
+Temperature: 1.202981134992084; Cost: 12035.0; Iterations: 42128360
+Temperature: 1.0225339647432714; Cost: 11597.0; Iterations: 43181569
+Temperature: 0.8691538700317807; Cost: 11325.0; Iterations: 44234778
+Temperature: 0.7387807895270135; Cost: 11025.0; Iterations: 45287987
+Temperature: 0.6279636710979615; Cost: 10737.0; Iterations: 46341196
+Temperature: 0.5337691204332672; Cost: 10589.0; Iterations: 47394405
+Temperature: 0.4537037523682771; Cost: 10401.0; Iterations: 48447614
+Temperature: 0.38564818951303553; Cost: 10314.0; Iterations: 49500823
+Temperature: 0.3278009610860802; Cost: 10201.0; Iterations: 50554032
+Temperature: 0.27863081692316816; Cost: 10133.0; Iterations: 51607241
+Temperature: 0.23683619438469292; Cost: 10069.0; Iterations: 52660450
+Temperature: 0.20131076522698899; Cost: 10024.0; Iterations: 53713659
+Final cost: 10024.0
+Total iterations: 53713659
+Took 4102.868423461914
+Running: apex4.txt-0.85-30-25
+1400
+Initial temperature: 1201.1383886011754
+Temperature: 1020.9676303109991; Cost: 43371.0; Iterations: 351070
+Temperature: 867.8224857643492; Cost: 43673.0; Iterations: 702140
+Temperature: 737.6491128996968; Cost: 43499.0; Iterations: 1053210
+Temperature: 627.0017459647422; Cost: 43379.0; Iterations: 1404280
+Temperature: 532.9514840700309; Cost: 43253.0; Iterations: 1755350
+Temperature: 453.0087614595263; Cost: 43215.0; Iterations: 2106420
+Temperature: 385.05744724059736; Cost: 43798.0; Iterations: 2457490
+Temperature: 327.29883015450775; Cost: 43712.0; Iterations: 2808560
+Temperature: 278.2040056313316; Cost: 43257.0; Iterations: 3159630
+Temperature: 236.47340478663185; Cost: 42551.0; Iterations: 3510700
+Temperature: 201.00239406863707; Cost: 42165.0; Iterations: 3861770
+Temperature: 170.8520349583415; Cost: 41181.0; Iterations: 4212840
+Temperature: 145.22422971459028; Cost: 42185.0; Iterations: 4563910
+Temperature: 123.44059525740174; Cost: 41270.0; Iterations: 4914980
+Temperature: 104.92450596879148; Cost: 41734.0; Iterations: 5266050
+Temperature: 89.18583007347276; Cost: 41507.0; Iterations: 5617120
+Temperature: 75.80795556245184; Cost: 40851.0; Iterations: 5968190
+Temperature: 64.43676222808406; Cost: 40877.0; Iterations: 6319260
+Temperature: 54.771247893871454; Cost: 39590.0; Iterations: 6670330
+Temperature: 46.55556070979073; Cost: 39652.0; Iterations: 7021400
+Temperature: 39.57222660332212; Cost: 39488.0; Iterations: 7372470
+Temperature: 33.636392612823805; Cost: 38212.0; Iterations: 7723540
+Temperature: 28.59093372090023; Cost: 37331.0; Iterations: 8074610
+Temperature: 24.302293662765198; Cost: 35435.0; Iterations: 8425680
+Temperature: 20.656949613350417; Cost: 35908.0; Iterations: 8776750
+Temperature: 17.558407171347852; Cost: 34371.0; Iterations: 9127820
+Temperature: 14.924646095645674; Cost: 32016.0; Iterations: 9478890
+Temperature: 12.685949181298822; Cost: 30137.0; Iterations: 9829960
+Temperature: 10.783056804103998; Cost: 28079.0; Iterations: 10181030
+Temperature: 9.165598283488398; Cost: 26167.0; Iterations: 10532100
+Temperature: 7.790758540965138; Cost: 23923.0; Iterations: 10883170
+Temperature: 6.622144759820367; Cost: 22654.0; Iterations: 11234240
+Temperature: 5.628823045847312; Cost: 20659.0; Iterations: 11585310
+Temperature: 4.784499588970215; Cost: 20131.0; Iterations: 11936380
+Temperature: 4.066824650624683; Cost: 18044.0; Iterations: 12287450
+Temperature: 3.4568009530309802; Cost: 17125.0; Iterations: 12638520
+Temperature: 2.938280810076333; Cost: 15720.0; Iterations: 12989590
+Temperature: 2.497538688564883; Cost: 14872.0; Iterations: 13340660
+Temperature: 2.1229078852801506; Cost: 14344.0; Iterations: 13691730
+Temperature: 1.804471702488128; Cost: 13501.0; Iterations: 14042800
+Temperature: 1.5338009471149088; Cost: 13062.0; Iterations: 14393870
+Temperature: 1.3037308050476724; Cost: 12492.0; Iterations: 14744940
+Temperature: 1.1081711842905215; Cost: 12116.0; Iterations: 15096010
+Temperature: 0.9419455066469433; Cost: 11753.0; Iterations: 15447080
+Temperature: 0.8006536806499018; Cost: 11442.0; Iterations: 15798150
+Temperature: 0.6805556285524166; Cost: 11197.0; Iterations: 16149220
+Temperature: 0.5784722842695541; Cost: 10992.0; Iterations: 16500290
+Temperature: 0.491701441629121; Cost: 10859.0; Iterations: 16851360
+Temperature: 0.41794622538475285; Cost: 10711.0; Iterations: 17202430
+Temperature: 0.3552542915770399; Cost: 10589.0; Iterations: 17553500
+Temperature: 0.3019661478404839; Cost: 10494.0; Iterations: 17904570
+Temperature: 0.2566712256644113; Cost: 10436.0; Iterations: 18255640
+Temperature: 0.2181705418147496; Cost: 10369.0; Iterations: 18606710
+Temperature: 0.18544496054253715; Cost: 10326.0; Iterations: 18957780
+Final cost: 10326.0
+Total iterations: 18957780
+Took 1421.739785194397
+Running: apex4.txt-0.85-30-50
+1400
+Initial temperature: 1201.1383886011754
+Temperature: 1020.9676303109991; Cost: 43309.0; Iterations: 702139
+Temperature: 867.8224857643492; Cost: 43624.0; Iterations: 1404278
+Temperature: 737.6491128996968; Cost: 43478.0; Iterations: 2106417
+Temperature: 627.0017459647422; Cost: 43743.0; Iterations: 2808556
+Temperature: 532.9514840700309; Cost: 43387.0; Iterations: 3510695
+Temperature: 453.0087614595263; Cost: 42360.0; Iterations: 4212834
+Temperature: 385.05744724059736; Cost: 42510.0; Iterations: 4914973
+Temperature: 327.29883015450775; Cost: 42952.0; Iterations: 5617112
+Temperature: 278.2040056313316; Cost: 43081.0; Iterations: 6319251
+Temperature: 236.47340478663185; Cost: 43209.0; Iterations: 7021390
+Temperature: 201.00239406863707; Cost: 42691.0; Iterations: 7723529
+Temperature: 170.8520349583415; Cost: 42354.0; Iterations: 8425668
+Temperature: 145.22422971459028; Cost: 42524.0; Iterations: 9127807
+Temperature: 123.44059525740174; Cost: 41802.0; Iterations: 9829946
+Temperature: 104.92450596879148; Cost: 41448.0; Iterations: 10532085
+Temperature: 89.18583007347276; Cost: 41546.0; Iterations: 11234224
+Temperature: 75.80795556245184; Cost: 40989.0; Iterations: 11936363
+Temperature: 64.43676222808406; Cost: 41224.0; Iterations: 12638502
+Temperature: 54.771247893871454; Cost: 39970.0; Iterations: 13340641
+Temperature: 46.55556070979073; Cost: 39985.0; Iterations: 14042780
+Temperature: 39.57222660332212; Cost: 38296.0; Iterations: 14744919
+Temperature: 33.636392612823805; Cost: 37710.0; Iterations: 15447058
+Temperature: 28.59093372090023; Cost: 37967.0; Iterations: 16149197
+Temperature: 24.302293662765198; Cost: 36815.0; Iterations: 16851336
+Temperature: 20.656949613350417; Cost: 34918.0; Iterations: 17553475
+Temperature: 17.558407171347852; Cost: 34241.0; Iterations: 18255614
+Temperature: 14.924646095645674; Cost: 31475.0; Iterations: 18957753
+Temperature: 12.685949181298822; Cost: 29992.0; Iterations: 19659892
+Temperature: 10.783056804103998; Cost: 29271.0; Iterations: 20362031
+Temperature: 9.165598283488398; Cost: 26177.0; Iterations: 21064170
+Temperature: 7.790758540965138; Cost: 24588.0; Iterations: 21766309
+Temperature: 6.622144759820367; Cost: 22870.0; Iterations: 22468448
+Temperature: 5.628823045847312; Cost: 21079.0; Iterations: 23170587
+Temperature: 4.784499588970215; Cost: 19670.0; Iterations: 23872726
+Temperature: 4.066824650624683; Cost: 18165.0; Iterations: 24574865
+Temperature: 3.4568009530309802; Cost: 17108.0; Iterations: 25277004
+Temperature: 2.938280810076333; Cost: 16202.0; Iterations: 25979143
+Temperature: 2.497538688564883; Cost: 15097.0; Iterations: 26681282
+Temperature: 2.1229078852801506; Cost: 14104.0; Iterations: 27383421
+Temperature: 1.804471702488128; Cost: 13537.0; Iterations: 28085560
+Temperature: 1.5338009471149088; Cost: 13097.0; Iterations: 28787699
+Temperature: 1.3037308050476724; Cost: 12585.0; Iterations: 29489838
+Temperature: 1.1081711842905215; Cost: 12034.0; Iterations: 30191977
+Temperature: 0.9419455066469433; Cost: 11617.0; Iterations: 30894116
+Temperature: 0.8006536806499018; Cost: 11357.0; Iterations: 31596255
+Temperature: 0.6805556285524166; Cost: 11115.0; Iterations: 32298394
+Temperature: 0.5784722842695541; Cost: 10853.0; Iterations: 33000533
+Temperature: 0.491701441629121; Cost: 10759.0; Iterations: 33702672
+Temperature: 0.41794622538475285; Cost: 10573.0; Iterations: 34404811
+Temperature: 0.3552542915770399; Cost: 10472.0; Iterations: 35106950
+Temperature: 0.3019661478404839; Cost: 10397.0; Iterations: 35809089
+Temperature: 0.2566712256644113; Cost: 10320.0; Iterations: 36511228
+Temperature: 0.2181705418147496; Cost: 10280.0; Iterations: 37213367
+Final cost: 10280.0
+Total iterations: 37213367
+Took 2928.171484231949
+Running: apex4.txt-0.85-30-75
+1400
+Initial temperature: 1201.1383886011754
+Temperature: 1020.9676303109991; Cost: 43464.0; Iterations: 1053209
+Temperature: 867.8224857643492; Cost: 43906.0; Iterations: 2106418
+Temperature: 737.6491128996968; Cost: 43474.0; Iterations: 3159627
+Temperature: 627.0017459647422; Cost: 42217.0; Iterations: 4212836
+Temperature: 532.9514840700309; Cost: 43661.0; Iterations: 5266045
+Temperature: 453.0087614595263; Cost: 42838.0; Iterations: 6319254
+Temperature: 385.05744724059736; Cost: 44292.0; Iterations: 7372463
+Temperature: 327.29883015450775; Cost: 42647.0; Iterations: 8425672
+Temperature: 278.2040056313316; Cost: 42551.0; Iterations: 9478881
+Temperature: 236.47340478663185; Cost: 42761.0; Iterations: 10532090
+Temperature: 201.00239406863707; Cost: 42303.0; Iterations: 11585299
+Temperature: 170.8520349583415; Cost: 42404.0; Iterations: 12638508
+Temperature: 145.22422971459028; Cost: 42006.0; Iterations: 13691717
+Temperature: 123.44059525740174; Cost: 41417.0; Iterations: 14744926
+Temperature: 104.92450596879148; Cost: 41415.0; Iterations: 15798135
+Temperature: 89.18583007347276; Cost: 41219.0; Iterations: 16851344
+Temperature: 75.80795556245184; Cost: 41818.0; Iterations: 17904553
+Temperature: 64.43676222808406; Cost: 40368.0; Iterations: 18957762
+Temperature: 54.771247893871454; Cost: 40201.0; Iterations: 20010971
+Temperature: 46.55556070979073; Cost: 39167.0; Iterations: 21064180
+Temperature: 39.57222660332212; Cost: 39302.0; Iterations: 22117389
+Temperature: 33.636392612823805; Cost: 38549.0; Iterations: 23170598
+Temperature: 28.59093372090023; Cost: 37145.0; Iterations: 24223807
+Temperature: 24.302293662765198; Cost: 36858.0; Iterations: 25277016
+Temperature: 20.656949613350417; Cost: 36263.0; Iterations: 26330225
+Temperature: 17.558407171347852; Cost: 33988.0; Iterations: 27383434
+Temperature: 14.924646095645674; Cost: 32952.0; Iterations: 28436643
+Temperature: 12.685949181298822; Cost: 30131.0; Iterations: 29489852
+Temperature: 10.783056804103998; Cost: 28259.0; Iterations: 30543061
+Temperature: 9.165598283488398; Cost: 26525.0; Iterations: 31596270
+Temperature: 7.790758540965138; Cost: 24635.0; Iterations: 32649479
+Temperature: 6.622144759820367; Cost: 23072.0; Iterations: 33702688
+Temperature: 5.628823045847312; Cost: 21267.0; Iterations: 34755897
+Temperature: 4.784499588970215; Cost: 19612.0; Iterations: 35809106
+Temperature: 4.066824650624683; Cost: 17948.0; Iterations: 36862315
+Temperature: 3.4568009530309802; Cost: 17092.0; Iterations: 37915524
+Temperature: 2.938280810076333; Cost: 15790.0; Iterations: 38968733
+Temperature: 2.497538688564883; Cost: 14858.0; Iterations: 40021942
+Temperature: 2.1229078852801506; Cost: 14051.0; Iterations: 41075151
+Temperature: 1.804471702488128; Cost: 13446.0; Iterations: 42128360
+Temperature: 1.5338009471149088; Cost: 12882.0; Iterations: 43181569
+Temperature: 1.3037308050476724; Cost: 12288.0; Iterations: 44234778
+Temperature: 1.1081711842905215; Cost: 11850.0; Iterations: 45287987
+Temperature: 0.9419455066469433; Cost: 11450.0; Iterations: 46341196
+Temperature: 0.8006536806499018; Cost: 11196.0; Iterations: 47394405
+Temperature: 0.6805556285524166; Cost: 10978.0; Iterations: 48447614
+Temperature: 0.5784722842695541; Cost: 10752.0; Iterations: 49500823
+Temperature: 0.491701441629121; Cost: 10540.0; Iterations: 50554032
+Temperature: 0.41794622538475285; Cost: 10361.0; Iterations: 51607241
+Temperature: 0.3552542915770399; Cost: 10251.0; Iterations: 52660450
+Temperature: 0.3019661478404839; Cost: 10163.0; Iterations: 53713659
+Temperature: 0.2566712256644113; Cost: 10090.0; Iterations: 54766868
+Temperature: 0.2181705418147496; Cost: 10050.0; Iterations: 55820077
+Final cost: 10050.0
+Total iterations: 55820077
+Took 4276.989060640335
+Running: apex4.txt-0.9-10-25
+1400
+Initial temperature: 400.37946286705846
+Temperature: 360.3415165803526; Cost: 42718.0; Iterations: 351070
+Temperature: 324.3073649223174; Cost: 42495.0; Iterations: 702140
+Temperature: 291.87662843008565; Cost: 42878.0; Iterations: 1053210
+Temperature: 262.68896558707706; Cost: 43037.0; Iterations: 1404280
+Temperature: 236.42006902836937; Cost: 42965.0; Iterations: 1755350
+Temperature: 212.77806212553244; Cost: 42443.0; Iterations: 2106420
+Temperature: 191.5002559129792; Cost: 42677.0; Iterations: 2457490
+Temperature: 172.3502303216813; Cost: 42878.0; Iterations: 2808560
+Temperature: 155.11520728951317; Cost: 42612.0; Iterations: 3159630
+Temperature: 139.60368656056184; Cost: 42759.0; Iterations: 3510700
+Temperature: 125.64331790450566; Cost: 40885.0; Iterations: 3861770
+Temperature: 113.0789861140551; Cost: 41031.0; Iterations: 4212840
+Temperature: 101.77108750264959; Cost: 42226.0; Iterations: 4563910
+Temperature: 91.59397875238463; Cost: 40799.0; Iterations: 4914980
+Temperature: 82.43458087714617; Cost: 41408.0; Iterations: 5266050
+Temperature: 74.19112278943156; Cost: 40722.0; Iterations: 5617120
+Temperature: 66.7720105104884; Cost: 39816.0; Iterations: 5968190
+Temperature: 60.09480945943956; Cost: 40937.0; Iterations: 6319260
+Temperature: 54.085328513495604; Cost: 39964.0; Iterations: 6670330
+Temperature: 48.67679566214604; Cost: 40042.0; Iterations: 7021400
+Temperature: 43.80911609593144; Cost: 39278.0; Iterations: 7372470
+Temperature: 39.428204486338295; Cost: 39567.0; Iterations: 7723540
+Temperature: 35.48538403770446; Cost: 37626.0; Iterations: 8074610
+Temperature: 31.936845633934016; Cost: 37778.0; Iterations: 8425680
+Temperature: 28.743161070540616; Cost: 36399.0; Iterations: 8776750
+Temperature: 25.868844963486556; Cost: 36305.0; Iterations: 9127820
+Temperature: 23.2819604671379; Cost: 36142.0; Iterations: 9478890
+Temperature: 20.95376442042411; Cost: 35090.0; Iterations: 9829960
+Temperature: 18.8583879783817; Cost: 34063.0; Iterations: 10181030
+Temperature: 16.97254918054353; Cost: 32843.0; Iterations: 10532100
+Temperature: 15.275294262489178; Cost: 31996.0; Iterations: 10883170
+Temperature: 13.74776483624026; Cost: 30571.0; Iterations: 11234240
+Temperature: 12.372988352616234; Cost: 29095.0; Iterations: 11585310
+Temperature: 11.135689517354612; Cost: 28084.0; Iterations: 11936380
+Temperature: 10.02212056561915; Cost: 26548.0; Iterations: 12287450
+Temperature: 9.019908509057236; Cost: 25057.0; Iterations: 12638520
+Temperature: 8.117917658151512; Cost: 24209.0; Iterations: 12989590
+Temperature: 7.306125892336361; Cost: 23182.0; Iterations: 13340660
+Temperature: 6.575513303102725; Cost: 22246.0; Iterations: 13691730
+Temperature: 5.917961972792453; Cost: 21348.0; Iterations: 14042800
+Temperature: 5.326165775513208; Cost: 19740.0; Iterations: 14393870
+Temperature: 4.793549197961887; Cost: 18826.0; Iterations: 14744940
+Temperature: 4.314194278165699; Cost: 18393.0; Iterations: 15096010
+Temperature: 3.8827748503491293; Cost: 17367.0; Iterations: 15447080
+Temperature: 3.4944973653142166; Cost: 16695.0; Iterations: 15798150
+Temperature: 3.145047628782795; Cost: 15887.0; Iterations: 16149220
+Temperature: 2.8305428659045155; Cost: 15273.0; Iterations: 16500290
+Temperature: 2.5474885793140642; Cost: 15151.0; Iterations: 16851360
+Temperature: 2.2927397213826577; Cost: 14256.0; Iterations: 17202430
+Temperature: 2.063465749244392; Cost: 13904.0; Iterations: 17553500
+Temperature: 1.857119174319953; Cost: 13397.0; Iterations: 17904570
+Temperature: 1.6714072568879579; Cost: 12847.0; Iterations: 18255640
+Temperature: 1.504266531199162; Cost: 12474.0; Iterations: 18606710
+Temperature: 1.353839878079246; Cost: 12269.0; Iterations: 18957780
+Temperature: 1.2184558902713214; Cost: 12059.0; Iterations: 19308850
+Temperature: 1.0966103012441892; Cost: 11754.0; Iterations: 19659920
+Temperature: 0.9869492711197704; Cost: 11577.0; Iterations: 20010990
+Temperature: 0.8882543440077934; Cost: 11402.0; Iterations: 20362060
+Temperature: 0.7994289096070141; Cost: 11245.0; Iterations: 20713130
+Temperature: 0.7194860186463127; Cost: 11033.0; Iterations: 21064200
+Temperature: 0.6475374167816814; Cost: 10960.0; Iterations: 21415270
+Temperature: 0.5827836751035133; Cost: 10800.0; Iterations: 21766340
+Temperature: 0.5245053075931619; Cost: 10674.0; Iterations: 22117410
+Temperature: 0.4720547768338458; Cost: 10592.0; Iterations: 22468480
+Temperature: 0.4248492991504612; Cost: 10481.0; Iterations: 22819550
+Temperature: 0.3823643692354151; Cost: 10429.0; Iterations: 23170620
+Final cost: 10429.0
+Total iterations: 23170620
+Took 1784.000365972519
+Running: apex4.txt-0.9-10-50
+1400
+Initial temperature: 400.37946286705846
+Temperature: 360.3415165803526; Cost: 43290.0; Iterations: 702139
+Temperature: 324.3073649223174; Cost: 43269.0; Iterations: 1404278
+Temperature: 291.87662843008565; Cost: 43270.0; Iterations: 2106417
+Temperature: 262.68896558707706; Cost: 43649.0; Iterations: 2808556
+Temperature: 236.42006902836937; Cost: 43077.0; Iterations: 3510695
+Temperature: 212.77806212553244; Cost: 41755.0; Iterations: 4212834
+Temperature: 191.5002559129792; Cost: 42109.0; Iterations: 4914973
+Temperature: 172.3502303216813; Cost: 42713.0; Iterations: 5617112
+Temperature: 155.11520728951317; Cost: 42116.0; Iterations: 6319251
+Temperature: 139.60368656056184; Cost: 42621.0; Iterations: 7021390
+Temperature: 125.64331790450566; Cost: 41878.0; Iterations: 7723529
+Temperature: 113.0789861140551; Cost: 41883.0; Iterations: 8425668
+Temperature: 101.77108750264959; Cost: 42216.0; Iterations: 9127807
+Temperature: 91.59397875238463; Cost: 40854.0; Iterations: 9829946
+Temperature: 82.43458087714617; Cost: 40557.0; Iterations: 10532085
+Temperature: 74.19112278943156; Cost: 41023.0; Iterations: 11234224
+Temperature: 66.7720105104884; Cost: 40851.0; Iterations: 11936363
+Temperature: 60.09480945943956; Cost: 41459.0; Iterations: 12638502
+Temperature: 54.085328513495604; Cost: 40427.0; Iterations: 13340641
+Temperature: 48.67679566214604; Cost: 40721.0; Iterations: 14042780
+Temperature: 43.80911609593144; Cost: 38749.0; Iterations: 14744919
+Temperature: 39.428204486338295; Cost: 38085.0; Iterations: 15447058
+Temperature: 35.48538403770446; Cost: 38306.0; Iterations: 16149197
+Temperature: 31.936845633934016; Cost: 37528.0; Iterations: 16851336
+Temperature: 28.743161070540616; Cost: 37182.0; Iterations: 17553475
+Temperature: 25.868844963486556; Cost: 36521.0; Iterations: 18255614
+Temperature: 23.2819604671379; Cost: 35576.0; Iterations: 18957753
+Temperature: 20.95376442042411; Cost: 35500.0; Iterations: 19659892
+Temperature: 18.8583879783817; Cost: 34853.0; Iterations: 20362031
+Temperature: 16.97254918054353; Cost: 33360.0; Iterations: 21064170
+Temperature: 15.275294262489178; Cost: 32324.0; Iterations: 21766309
+Temperature: 13.74776483624026; Cost: 30397.0; Iterations: 22468448
+Temperature: 12.372988352616234; Cost: 29161.0; Iterations: 23170587
+Temperature: 11.135689517354612; Cost: 28314.0; Iterations: 23872726
+Temperature: 10.02212056561915; Cost: 26909.0; Iterations: 24574865
+Temperature: 9.019908509057236; Cost: 25721.0; Iterations: 25277004
+Temperature: 8.117917658151512; Cost: 24659.0; Iterations: 25979143
+Temperature: 7.306125892336361; Cost: 23652.0; Iterations: 26681282
+Temperature: 6.575513303102725; Cost: 21896.0; Iterations: 27383421
+Temperature: 5.917961972792453; Cost: 20771.0; Iterations: 28085560
+Temperature: 5.326165775513208; Cost: 20105.0; Iterations: 28787699
+Temperature: 4.793549197961887; Cost: 19503.0; Iterations: 29489838
+Temperature: 4.314194278165699; Cost: 18175.0; Iterations: 30191977
+Temperature: 3.8827748503491293; Cost: 17324.0; Iterations: 30894116
+Temperature: 3.4944973653142166; Cost: 16474.0; Iterations: 31596255
+Temperature: 3.145047628782795; Cost: 15994.0; Iterations: 32298394
+Temperature: 2.8305428659045155; Cost: 15284.0; Iterations: 33000533
+Temperature: 2.5474885793140642; Cost: 14532.0; Iterations: 33702672
+Temperature: 2.2927397213826577; Cost: 14208.0; Iterations: 34404811
+Temperature: 2.063465749244392; Cost: 13625.0; Iterations: 35106950
+Temperature: 1.857119174319953; Cost: 13306.0; Iterations: 35809089
+Temperature: 1.6714072568879579; Cost: 12978.0; Iterations: 36511228
+Temperature: 1.504266531199162; Cost: 12553.0; Iterations: 37213367
+Temperature: 1.353839878079246; Cost: 12269.0; Iterations: 37915506
+Temperature: 1.2184558902713214; Cost: 12039.0; Iterations: 38617645
+Temperature: 1.0966103012441892; Cost: 11834.0; Iterations: 39319784
+Temperature: 0.9869492711197704; Cost: 11601.0; Iterations: 40021923
+Temperature: 0.8882543440077934; Cost: 11293.0; Iterations: 40724062
+Temperature: 0.7994289096070141; Cost: 11115.0; Iterations: 41426201
+Temperature: 0.7194860186463127; Cost: 11018.0; Iterations: 42128340
+Temperature: 0.6475374167816814; Cost: 10790.0; Iterations: 42830479
+Temperature: 0.5827836751035133; Cost: 10624.0; Iterations: 43532618
+Temperature: 0.5245053075931619; Cost: 10535.0; Iterations: 44234757
+Temperature: 0.4720547768338458; Cost: 10424.0; Iterations: 44936896
+Temperature: 0.4248492991504612; Cost: 10377.0; Iterations: 45639035
+Final cost: 10377.0
+Total iterations: 45639035
+Took 3529.755804538727
+Running: apex4.txt-0.9-10-75
+1400
+Initial temperature: 400.37946286705846
+Temperature: 360.3415165803526; Cost: 43234.0; Iterations: 1053209
+Temperature: 324.3073649223174; Cost: 42990.0; Iterations: 2106418
+Temperature: 291.87662843008565; Cost: 43192.0; Iterations: 3159627
+Temperature: 262.68896558707706; Cost: 42022.0; Iterations: 4212836
+Temperature: 236.42006902836937; Cost: 43189.0; Iterations: 5266045
+Temperature: 212.77806212553244; Cost: 42486.0; Iterations: 6319254
+Temperature: 191.5002559129792; Cost: 43538.0; Iterations: 7372463
+Temperature: 172.3502303216813; Cost: 42110.0; Iterations: 8425672
+Temperature: 155.11520728951317; Cost: 42071.0; Iterations: 9478881
+Temperature: 139.60368656056184; Cost: 41455.0; Iterations: 10532090
+Temperature: 125.64331790450566; Cost: 41857.0; Iterations: 11585299
+Temperature: 113.0789861140551; Cost: 42229.0; Iterations: 12638508
+Temperature: 101.77108750264959; Cost: 41605.0; Iterations: 13691717
+Temperature: 91.59397875238463; Cost: 41411.0; Iterations: 14744926
+Temperature: 82.43458087714617; Cost: 40994.0; Iterations: 15798135
+Temperature: 74.19112278943156; Cost: 41424.0; Iterations: 16851344
+Temperature: 66.7720105104884; Cost: 41090.0; Iterations: 17904553
+Temperature: 60.09480945943956; Cost: 39703.0; Iterations: 18957762
+Temperature: 54.085328513495604; Cost: 39869.0; Iterations: 20010971
+Temperature: 48.67679566214604; Cost: 39536.0; Iterations: 21064180
+Temperature: 43.80911609593144; Cost: 39116.0; Iterations: 22117389
+Temperature: 39.428204486338295; Cost: 38483.0; Iterations: 23170598
+Temperature: 35.48538403770446; Cost: 38709.0; Iterations: 24223807
+Temperature: 31.936845633934016; Cost: 37951.0; Iterations: 25277016
+Temperature: 28.743161070540616; Cost: 37226.0; Iterations: 26330225
+Temperature: 25.868844963486556; Cost: 37039.0; Iterations: 27383434
+Temperature: 23.2819604671379; Cost: 35935.0; Iterations: 28436643
+Temperature: 20.95376442042411; Cost: 34765.0; Iterations: 29489852
+Temperature: 18.8583879783817; Cost: 34960.0; Iterations: 30543061
+Temperature: 16.97254918054353; Cost: 33074.0; Iterations: 31596270
+Temperature: 15.275294262489178; Cost: 32763.0; Iterations: 32649479
+Temperature: 13.74776483624026; Cost: 30859.0; Iterations: 33702688
+Temperature: 12.372988352616234; Cost: 29315.0; Iterations: 34755897
+Temperature: 11.135689517354612; Cost: 27827.0; Iterations: 35809106
+Temperature: 10.02212056561915; Cost: 26297.0; Iterations: 36862315
+Temperature: 9.019908509057236; Cost: 25909.0; Iterations: 37915524
+Temperature: 8.117917658151512; Cost: 24307.0; Iterations: 38968733
+Temperature: 7.306125892336361; Cost: 23166.0; Iterations: 40021942
+Temperature: 6.575513303102725; Cost: 22297.0; Iterations: 41075151
+Temperature: 5.917961972792453; Cost: 21204.0; Iterations: 42128360
+Temperature: 5.326165775513208; Cost: 20147.0; Iterations: 43181569
+Temperature: 4.793549197961887; Cost: 19186.0; Iterations: 44234778
+Temperature: 4.314194278165699; Cost: 18522.0; Iterations: 45287987
+Temperature: 3.8827748503491293; Cost: 17237.0; Iterations: 46341196
+Temperature: 3.4944973653142166; Cost: 16525.0; Iterations: 47394405
+Temperature: 3.145047628782795; Cost: 15894.0; Iterations: 48447614
+Temperature: 2.8305428659045155; Cost: 15201.0; Iterations: 49500823
+Temperature: 2.5474885793140642; Cost: 14566.0; Iterations: 50554032
+Temperature: 2.2927397213826577; Cost: 14212.0; Iterations: 51607241
+Temperature: 2.063465749244392; Cost: 13738.0; Iterations: 52660450
+Temperature: 1.857119174319953; Cost: 13310.0; Iterations: 53713659
+Temperature: 1.6714072568879579; Cost: 13010.0; Iterations: 54766868
+Temperature: 1.504266531199162; Cost: 12588.0; Iterations: 55820077
+Temperature: 1.353839878079246; Cost: 12109.0; Iterations: 56873286
+Temperature: 1.2184558902713214; Cost: 12005.0; Iterations: 57926495
+Temperature: 1.0966103012441892; Cost: 11671.0; Iterations: 58979704
+Temperature: 0.9869492711197704; Cost: 11401.0; Iterations: 60032913
+Temperature: 0.8882543440077934; Cost: 11204.0; Iterations: 61086122
+Temperature: 0.7994289096070141; Cost: 11054.0; Iterations: 62139331
+Temperature: 0.7194860186463127; Cost: 10767.0; Iterations: 63192540
+Temperature: 0.6475374167816814; Cost: 10683.0; Iterations: 64245749
+Temperature: 0.5827836751035133; Cost: 10547.0; Iterations: 65298958
+Temperature: 0.5245053075931619; Cost: 10429.0; Iterations: 66352167
+Temperature: 0.4720547768338458; Cost: 10331.0; Iterations: 67405376
+Temperature: 0.4248492991504612; Cost: 10235.0; Iterations: 68458585
+Temperature: 0.3823643692354151; Cost: 10158.0; Iterations: 69511794
+Temperature: 0.3441279323118736; Cost: 10128.0; Iterations: 70565003
+Final cost: 10128.0
+Total iterations: 70565003
+Took 5388.112134218216
+Running: apex4.txt-0.9-20-25
+1400
+Initial temperature: 800.7589257341169
+Temperature: 720.6830331607052; Cost: 43140.0; Iterations: 351070
+Temperature: 648.6147298446348; Cost: 43528.0; Iterations: 702140
+Temperature: 583.7532568601713; Cost: 43031.0; Iterations: 1053210
+Temperature: 525.3779311741541; Cost: 43557.0; Iterations: 1404280
+Temperature: 472.84013805673874; Cost: 43263.0; Iterations: 1755350
+Temperature: 425.5561242510649; Cost: 43281.0; Iterations: 2106420
+Temperature: 383.0005118259584; Cost: 43930.0; Iterations: 2457490
+Temperature: 344.7004606433626; Cost: 43599.0; Iterations: 2808560
+Temperature: 310.23041457902633; Cost: 43666.0; Iterations: 3159630
+Temperature: 279.2073731211237; Cost: 42802.0; Iterations: 3510700
+Temperature: 251.28663580901133; Cost: 42963.0; Iterations: 3861770
+Temperature: 226.1579722281102; Cost: 41756.0; Iterations: 4212840
+Temperature: 203.54217500529919; Cost: 42364.0; Iterations: 4563910
+Temperature: 183.18795750476926; Cost: 41815.0; Iterations: 4914980
+Temperature: 164.86916175429235; Cost: 42282.0; Iterations: 5266050
+
+Process finished with exit code -1

@@ -2,11 +2,13 @@ import cProfile
 import pstats
 import sim_anneal
 
-FILE_NAMES = ["alu2.txt", "apex1.txt", "apex4.txt", "C880.txt", "cm138a.txt", "cm150a.txt", "cm151a.txt",
-              "cm162a.txt", "cps.txt", "e64.txt", "paira.txt", "pairb.txt"]
-COOLING_FACTORS = [0.8, 0.85, 0.9, 0.95]
-INITIAL_TEMP_FACTORS = [10, 20, 30]
-MOVES_PER_TEMP_FACTORS = [25, 50, 75]
+# "apex1.txt",
+#FILE_NAMES = ["apex4.txt", "C880.txt", "cm138a.txt", "cm150a.txt", "cm151a.txt",
+ #             "cm162a.txt", "cps.txt", "e64.txt", "paira.txt", "pairb.txt"]
+FILE_NAMES = ["cps.txt"]
+COOLING_FACTORS = [0.8]
+INITIAL_TEMP_FACTORS = [10, 20]
+MOVES_PER_TEMP_FACTORS = [75]
 
 def main():
     #profiler = cProfile.Profile()
