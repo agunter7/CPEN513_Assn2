@@ -9,16 +9,17 @@ import random
 import time
 import matplotlib.pyplot as plt
 from tkinter import *
-from math import exp, sqrt
+from math import exp, sqrt, ceil
 
 # Constants
-file_name = ""
+file_name = "e64.txt"
 FILE_DIR = "../benchmarks/"
 
 # Hyperparameters
 cooling_factor = 0.8  # Coefficient for rate of anneal cooling
 initial_temp_factor = 10  # Coefficient for anneal initial temperature
 moves_per_temp_factor = 75  # Coefficient for number of moves to be performed at each temperature
+COST_TRANSITION_RATIO = 0.8  # Ratio for determining when to start using a range window for moves
 TEMP_EXIT_RATIO = 0.002  # Ratio for determining exit condition based on temperature
 COST_EXIT_RATIO = 0.005  # Ratio for determining exit condition based on cost
 MOVE_SAMPLE_SIZE = 50  # Initial number of moves to be performed to determine cost variance of moves
@@ -29,6 +30,7 @@ num_cells_to_place = 0  # Number of cells in the circuit to be placed
 num_cell_connections = 0  # Number of connections to be routed, summed across all cells/nets
 grid_width = 0  # Width of the placement grid
 grid_height = 0  # Height of the placement grid
+half_grid_max_dim = 0  # Larger of width/height
 cell_dict = {}  # Dictionary of all cells, key is cell ID
 net_dict = {}  # Dictionary of all nets, key is net ID
 placement_grid = []  # 2D list of sites for placement
@@ -36,16 +38,21 @@ placement_done = False  # Is the placement complete?
 cost_history = []  # History of costs at each temperature
 iter_history = []  # History of cumulative iterations performed at each temperature
 temperature_history = []  # History of exact temperature values
+acceptance_history = []
 root = None  # Tkinter root
 unique_line_list = []  # List of unique lines across multiple nets
-# Simulated Annealing variables
+# Simulated Annealing
 sa_temp = -1  # SA temperature
 sa_initial_temp = -1  # Starting SA temperature
 iters_per_temp = -1  # Number of iterations to perform at each temperature
 iters_this_temp = 0  # Number of iterations performed at the current temperature
+initial_cost = -1
 current_cost = 0  # The estimated cost of the current placement
-prev_temp_cost = 0  # Cost at the end of exploring the previous temperature
+prev_temp_cost = -1  # Cost at the end of exploring the previous temperature
+prev_temp_cost_ratio = float("inf")
 total_iters = 0  # Cumulative number of iterations performed throughout program run
+acceptances_this_temp = 0  # Number of accepted moves at the current temperature
+range_window_half_length = -1  # Half the length of a side of the (square) range window
 
 
 class Site:
@@ -257,6 +264,7 @@ def initial_placement(routing_canvas):
     global sa_initial_temp
     global cost_history
     global iter_history
+    global initial_cost
 
     # Check if there are enough sites for the requisite number of cells
     if num_cells_to_place > (grid_width*grid_height):
@@ -295,7 +303,8 @@ def initial_placement(routing_canvas):
             draw_net(routing_canvas, net)
 
     # Find the initial cost
-    current_cost = calculate_total_cost()
+    initial_cost = calculate_total_cost()
+    current_cost = initial_cost
 
     # Set the initial annealing temperature based on a sample of moves
     initial_cost_list = []
@@ -322,7 +331,7 @@ def initial_placement(routing_canvas):
     sa_temp = sa_initial_temp
 
     # Store for plotting
-    cost_history.append(current_cost)
+    cost_history.append(initial_cost)
     iter_history.append(total_iters)
     temperature_history.append(sa_temp)
 
@@ -430,6 +439,9 @@ def sa_to_completion(routing_canvas):
         for temp in temperature_history:
             f.write(str(temp) + ", ")
         f.write("\n")
+        for acceptance in acceptance_history:
+            f.write(str(acceptance) + ", ")
+        f.write("\n")
         f.write(str(elapsed))
 
 
@@ -474,9 +486,17 @@ def sa_step(routing_canvas):
     global total_iters
     global prev_temp_cost
     global root
+    global COST_TRANSITION_RATIO
+    global acceptances_this_temp
+    global range_window_half_length
+    global prev_temp_cost_ratio
 
     # Choose move randomly
-    cell_a, target_x, target_y = pick_random_move()
+    if prev_temp_cost_ratio < COST_TRANSITION_RATIO:
+        cell_a, target_x, target_y = pick_restricted_move()
+        #cell_a, target_x, target_y = pick_random_move()
+    else:
+        cell_a, target_x, target_y = pick_random_move()
 
     # Check if target site is occupied by a cell
     target_site = placement_grid[target_y][target_x]
@@ -495,6 +515,7 @@ def sa_step(routing_canvas):
 
     # Check if move will be taken
     if decision_value < decision_boundary:
+        acceptances_this_temp += 1
         if target_site.isOccupied:
             swap(cell_a, cell_b, delta)
         else:
@@ -507,6 +528,18 @@ def sa_step(routing_canvas):
             redraw_all_lines(routing_canvas)
         if root is not None:
             root.update_idletasks()  # Update the Tkinter GUI
+
+        # Update range window
+        if prev_temp_cost_ratio < COST_TRANSITION_RATIO:
+            if acceptances_this_temp/iters_this_temp > 0.44:
+                if range_window_half_length < half_grid_max_dim:
+                    range_window_half_length += 1
+            else:
+                if range_window_half_length > 1:
+                    range_window_half_length += -1
+            print(range_window_half_length)
+        acceptance_history.append(acceptances_this_temp)
+        acceptances_this_temp = 0
 
         # Reduce temperature
         sa_temp *= cooling_factor
@@ -536,6 +569,7 @@ def sa_step(routing_canvas):
             print("Total iterations: " + str(total_iters))
 
         prev_temp_cost = current_cost  # Note the cost at this temp for the next temp's calculations
+        prev_temp_cost_ratio = prev_temp_cost/initial_cost
 
 
 def redraw_all_lines(routing_canvas: Canvas):
@@ -671,13 +705,54 @@ def hpwl(net: Net) -> float:
     return float((rightmost_x-leftmost_x) + (lowest_y-highest_y))
 
 
+def pick_restricted_move():
+    """
+    Pick a random cell and a random spot to move that cell to within a restricted window
+    :return: (Cell, int, int) - cell,x,y
+    """
+    global range_window_half_length
+
+    # Get random cell
+    cell_idx = random.randrange(num_cells_to_place)
+    cell = cell_dict[cell_idx]
+
+    # Get range window centred around the cell
+    cell_x = cell.site.x
+    cell_y = cell.site.y
+    min_x = cell_x - range_window_half_length
+    if min_x < 0:
+        min_x = 0
+    max_x = cell_x + range_window_half_length
+    if max_x >= grid_width:
+        max_x = grid_width - 1
+    min_y = cell_y - range_window_half_length
+    if min_y < 0:
+        min_y = 0
+    max_y = cell_y + range_window_half_length
+    if max_y >= grid_height:
+        max_y = grid_height - 1
+
+    # Get random coordinates from inside the range window
+    target_x = random.randrange(min_x, max_x+1)
+    target_y = random.randrange(min_y, max_y+1)
+
+    # Ensure target is not the cell's current location
+    if target_x == cell_x and target_y == cell_y:
+        return pick_restricted_move()
+    else:
+        return cell, target_x, target_y
+
+
 def pick_random_move():
     """
     Pick a random cell and a random spot to move that cell to
     :return: (Cell,int,int) - cell,x,y
     """
+    # Get random cell
     cell_idx = random.randrange(num_cells_to_place)
     cell = cell_dict[cell_idx]
+
+    # Get random location coordinates
     target_y = random.randrange(grid_height)
     target_x = random.randrange(grid_width)
 
@@ -717,21 +792,29 @@ def create_placement_grid(routing_file) -> list[list[Site]]:
     global cell_dict
     global net_dict
     global placement_grid
+    global range_window_half_length
+    global half_grid_max_dim
 
     grid_line = routing_file.readline()
+
     # Create the routing grid
     num_cells_to_place = int(grid_line.split(' ')[0])
     num_cell_connections = int(grid_line.split(' ')[1])
     grid_height = int(grid_line.split(' ')[2])
     grid_width = int(grid_line.split(' ')[3])
+    if grid_height >= grid_width:
+        half_grid_max_dim = ceil(grid_height/2)
+    else:
+        half_grid_max_dim = ceil(grid_width/2)
+    range_window_half_length = half_grid_max_dim
     placement_grid = []
     # Create grid in column-major order
     for _ in range(grid_height):
         placement_grid.append([])
     # Populate grid with sites
-    for cell_x, column in enumerate(placement_grid):
-        for cell_y in range(grid_width):
-            column.append(Site(x=cell_x, y=cell_y))
+    for cell_y, row in enumerate(placement_grid):
+        for cell_x in range(grid_width):
+            row.append(Site(x=cell_x, y=cell_y))
 
     # Keep a cell dictionary
     for cell_id in range(num_cells_to_place):
