@@ -905,10 +905,13 @@ def create_placement_grid(routing_file) -> list[list[Site]]:
         new_net.source = source_cell
         source_cell.nets.append(new_net)
         for sink_idx in range(2, num_cells_in_net+1):
-            sink_id = int(net_tokens[sink_idx])
-            sink_cell = cell_dict[sink_id]
-            new_net.sinks.append(sink_cell)
-            sink_cell.nets.append(new_net)
+            if net_tokens[sink_idx] == '\n' or net_tokens[sink_idx] == '':
+                continue
+            else:
+                sink_id = int(net_tokens[sink_idx])
+                sink_cell = cell_dict[sink_id]
+                new_net.sinks.append(sink_cell)
+                sink_cell.nets.append(new_net)
 
     return placement_grid
 
