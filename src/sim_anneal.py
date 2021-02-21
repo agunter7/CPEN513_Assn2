@@ -537,7 +537,6 @@ def sa_step(routing_canvas):
             else:
                 if range_window_half_length > 1:
                     range_window_half_length += -1
-            print(range_window_half_length)
         acceptance_history.append(acceptances_this_temp)
         acceptances_this_temp = 0
 
@@ -589,7 +588,6 @@ def greedy_optimization():
     """
     global cell_dict
 
-    greedy_start = time.time()
     for cell in cell_dict.values():
         # Find best adjacent move
         cell_x = cell.site.x
@@ -626,9 +624,6 @@ def greedy_optimization():
                 swap(cell, best_target_site.occupant, best_delta)
             else:
                 move(cell, best_x, best_y, best_delta)
-    greedy_end = time.time()
-    greedy_elapsed = greedy_end - greedy_start
-    print("Greedy opt took: " + str(greedy_elapsed))
 
 
 def redraw_all_lines(routing_canvas: Canvas):
