@@ -1,15 +1,19 @@
-# CPEN 513 Assignment 1
-CPEN 513 CAD Algorithms for Integrated Circuits
+# CPEN 513 Assignment 2
+CPEN 513 CAD Algorithms for Integrated Circuits Assignment 2: Simulated Annealing
 
 # Usage
 Run src/main.py with a Python 3.9 interpreter
 
-A routing window should be displayed upon running the file.
+A placement window should be displayed upon running the file.
 
-Press 'a' or 'd' to select the A* or Dijkstra routing algorithm, respectively.
-Once selected, the algorithm cannot be changed without restarting the program.
+Press a number key to begin annealing. 
+'0' will run annealing to completion, reporting runtime since '0' was pressed.
+'1' will perform a single annealing iteration.
+'2' through '9' will perform 10^n iterations, where n='n' (i.e. the pressed key)
 
-After selecting an algorithm, press a number key indicating
-how many steps you would like the algorithm to perform. 
-E.g. Pressing '1' triggers a single step while '5' triggers five steps.
-Pressing '0' will run the entire program to completion, including all rip-up and reroute stages.
+At the end of annealing, a plot summarizing the changes to total cost throughout the run will be displayed.
+
+Logs to the console will be made periodically during the anneal and at anneal completion.
+
+GUI updates occur if and only if an annealing temperature update happens or if a computation sequence completes.
+GUI may freeze, but the program will continue running. Check the console for continued logs as evidence of this.

@@ -227,7 +227,7 @@ def anneal(f_name: str):
     root = Tk()
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
-    site_length = 7
+    site_length = 20
     routing_canvas = Canvas(root, bg='white', width=grid_width*site_length, height=grid_height*site_length)
     routing_canvas.grid(column=0, row=0, sticky=(N, W, E, S))
     for x in range(grid_width):

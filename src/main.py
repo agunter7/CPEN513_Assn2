@@ -10,7 +10,7 @@ INITIAL_TEMP_FACTORS = [10, 20, 30]
 MOVES_PER_TEMP_FACTORS = [25, 50, 75]
 
 # File name for interactive program (with GUI)
-USER_FILE_NAME = "test.txt"
+USER_FILE_NAME = "alu2.txt"
 
 
 def main():
