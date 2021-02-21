@@ -12,7 +12,7 @@ from tkinter import *
 from math import exp, sqrt, ceil
 
 # Constants
-file_name = "cm162a.txt"
+file_name = "test.txt"
 FILE_DIR = "../benchmarks/"
 
 # Hyperparameters
@@ -225,7 +225,7 @@ def anneal():
     root = Tk()
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
-    site_length = 15
+    site_length = 7
     routing_canvas = Canvas(root, bg='white', width=grid_width*site_length, height=grid_height*site_length)
     routing_canvas.grid(column=0, row=0, sticky=(N, W, E, S))
     for x in range(grid_width):
@@ -502,8 +502,7 @@ def sa_step(routing_canvas):
 
     # Choose move randomly
     if prev_temp_cost_ratio < COST_TRANSITION_RATIO:
-        cell_a, target_x, target_y = pick_restricted_move()
-        #cell_a, target_x, target_y = pick_random_move()
+        cell_a, target_x, target_y = pick_ranged_move()
     else:
         cell_a, target_x, target_y = pick_random_move()
 
@@ -557,7 +556,7 @@ def sa_step(routing_canvas):
         # Heartbeat
         print("Temperature: " + str(sa_temp) + "; Cost: " + str(current_cost) + "; Iterations: " + str(total_iters))
 
-        # Store data for plot
+        # Store data
         cost_history.append(current_cost)
         iter_history.append(total_iters)
         temperature_history.append(sa_temp)
@@ -567,7 +566,7 @@ def sa_step(routing_canvas):
             # Perform a greedy final step
             greedy_optimization()
 
-            # Store data for plot
+            # Store data
             cost_history.append(current_cost)
             iter_history.append(total_iters)
             temperature_history.append(sa_temp)
@@ -768,9 +767,9 @@ def hpwl(net: Net) -> float:
     return float((rightmost_x-leftmost_x) + 2*(lowest_y-highest_y))
 
 
-def pick_restricted_move():
+def pick_ranged_move():
     """
-    Pick a random cell and a random spot to move that cell to within a restricted window
+    Pick a random cell and a random spot to move that cell to within a range window
     :return: (Cell, int, int) - cell,x,y
     """
     global range_window_half_length
@@ -801,7 +800,7 @@ def pick_restricted_move():
 
     # Ensure target is not the cell's current location
     if target_x == cell_x and target_y == cell_y:
-        return pick_restricted_move()
+        return pick_ranged_move()
     else:
         return cell, target_x, target_y
 
