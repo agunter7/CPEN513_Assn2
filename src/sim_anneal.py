@@ -556,6 +556,17 @@ def sa_step(routing_canvas):
 
         if (prev_temp_cost-current_cost)/current_cost < COST_EXIT_RATIO and \
                 sa_temp/sa_initial_temp < TEMP_EXIT_RATIO:
+            # Perform a greedy final step
+            greedy_optimization()
+
+            # Store data for plot
+            cost_history.append(current_cost)
+            iter_history.append(total_iters)
+            temperature_history.append(sa_temp)
+
+            if routing_canvas is not None:
+                redraw_all_lines(routing_canvas)
+
             # Placement is complete
             placement_done = True
             # Plot cost history and save data
@@ -570,6 +581,54 @@ def sa_step(routing_canvas):
 
         prev_temp_cost = current_cost  # Note the cost at this temp for the next temp's calculations
         prev_temp_cost_ratio = prev_temp_cost/initial_cost
+
+
+def greedy_optimization():
+    """
+    Perform a greedy optimization that only takes good moves
+    """
+    global cell_dict
+
+    greedy_start = time.time()
+    for cell in cell_dict.values():
+        # Find best adjacent move
+        cell_x = cell.site.x
+        cell_y = cell.site.y
+        range_x = [cell_x]
+        range_y = [cell_y]
+        for offset in range(1, 20):
+            range_x.append(cell_x+offset)
+            range_x.append(cell_x-offset)
+            range_y.append(cell_y+offset)
+            range_y.append(cell_y-offset)
+        best_delta = 0
+        best_x = cell_x
+        best_y = cell_y
+        best_target_site = cell.site
+        for search_x in range_x:
+            if 0 <= search_x < grid_width:
+                for search_y in range_y:
+                    if 0 <= search_y < grid_height:
+                        target_site = placement_grid[search_y][search_x]
+                        if target_site is not cell.site:
+                            if target_site.isOccupied:
+                                delta = get_swap_delta(cell, target_site.occupant)
+                            else:
+                                delta = get_move_delta(cell, search_x, search_y)
+                            if delta < best_delta:
+                                best_delta = delta
+                                best_x = search_x
+                                best_y = search_y
+                                best_target_site = target_site
+        # Move cell to site (or swap cell with site's cell)
+        if best_target_site is not cell.site:
+            if best_target_site.isOccupied:
+                swap(cell, best_target_site.occupant, best_delta)
+            else:
+                move(cell, best_x, best_y, best_delta)
+    greedy_end = time.time()
+    greedy_elapsed = greedy_end - greedy_start
+    print("Greedy opt took: " + str(greedy_elapsed))
 
 
 def redraw_all_lines(routing_canvas: Canvas):
@@ -592,10 +651,10 @@ def move(cell: Cell, x: int, y: int, delta: float):
     # Move the cell
     old_site = cell.site
     cell.site = placement_grid[y][x]
-    cell.site.isOccupied = True
-    cell.site.occupant = cell
     old_site.isOccupied = False
     old_site.occupant = None
+    cell.site.isOccupied = True
+    cell.site.occupant = cell
 
     # Update total cost
     current_cost += delta
