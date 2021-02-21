@@ -12,7 +12,7 @@ from tkinter import *
 from math import exp, sqrt, ceil
 
 # Constants
-file_name = "e64.txt"
+file_name = "cm162a.txt"
 FILE_DIR = "../benchmarks/"
 
 # Hyperparameters
@@ -230,9 +230,9 @@ def anneal():
     routing_canvas.grid(column=0, row=0, sticky=(N, W, E, S))
     for x in range(grid_width):
         for y in range(grid_height):
-            # Add a rectangle to the canvas
+            # Add a cell site rectangle to the canvas
             top_left_x = site_length * x
-            top_left_y = site_length * y
+            top_left_y = site_length * y * 2
             bottom_right_x = top_left_x + site_length
             bottom_right_y = top_left_y + site_length
             rectangle_colour = "white"
@@ -240,6 +240,15 @@ def anneal():
             site = placement_grid[y][x]
             site.canvas_id = routing_canvas.create_rectangle(rectangle_coords, fill=rectangle_colour)
             site.canvas_centre = ((top_left_x+bottom_right_x)/2, (top_left_y+bottom_right_y)/2)
+            # Add a routing channel rectangle to the canvas
+            if y != grid_height-1:
+                top_left_y = bottom_right_y
+                bottom_right_y = top_left_y + site_length
+                rectangle_colour = "black"
+                rectangle_coords = (top_left_x, top_left_y, bottom_right_x, bottom_right_y)
+                routing_canvas.create_rectangle(rectangle_coords, fill=rectangle_colour)
+
+
 
     # Perform initial placement
     initial_placement(routing_canvas)
@@ -756,7 +765,7 @@ def hpwl(net: Net) -> float:
             highest_y = site_y
 
     # Calculate HPWL from bounding box
-    return float((rightmost_x-leftmost_x) + (lowest_y-highest_y))
+    return float((rightmost_x-leftmost_x) + 2*(lowest_y-highest_y))
 
 
 def pick_restricted_move():
