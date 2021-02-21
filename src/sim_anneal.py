@@ -196,9 +196,10 @@ def quick_anneal(f_name, cool_fact, init_temp_fact, move_p_t_fact):
     sa_to_completion(None)
 
     
-def anneal():
+def anneal(f_name: str):
     """
     Perform anneal with a GUI.
+    :param f_name: Name of file to open
     :return: void
     """
     global FILE_DIR
@@ -213,6 +214,7 @@ def anneal():
     random.seed(0)  # Set random seed
 
     # Determine file to open
+    file_name = f_name
     file_path = FILE_DIR + file_name
     script_path = os.path.dirname(__file__)
     true_path = os.path.join(script_path, file_path)

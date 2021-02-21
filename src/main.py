@@ -2,12 +2,15 @@ import cProfile
 import pstats
 import sim_anneal
 
-# Experimental grid search parameters
+# Experimental grid search parameters (do not alter)
 FILE_NAMES = ["alu2.txt", "apex1.txt", "apex4.txt", "C880.txt", "cm138a.txt", "cm150a.txt", "cm151a.txt",
               "cm162a.txt", "cps.txt", "e64.txt", "paira.txt", "pairb.txt"]
 COOLING_FACTORS = [0.8, 0.85, 0.9]
 INITIAL_TEMP_FACTORS = [10, 20, 30]
 MOVES_PER_TEMP_FACTORS = [25, 50, 75]
+
+# File name for interactive program (with GUI)
+USER_FILE_NAME = "test.txt"
 
 
 def main():
@@ -29,7 +32,7 @@ def main():
         stats.print_stats()
         print("end")
     else:
-        sim_anneal.anneal()
+        sim_anneal.anneal(USER_FILE_NAME)
 
 
 if __name__ == "__main__":
