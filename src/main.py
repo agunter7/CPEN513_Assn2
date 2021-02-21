@@ -9,8 +9,8 @@ COOLING_FACTORS = [0.8, 0.85, 0.9]
 INITIAL_TEMP_FACTORS = [10, 20, 30]
 MOVES_PER_TEMP_FACTORS = [25, 50, 75]
 
-# File name for interactive program (with GUI)
-USER_FILE_NAME = "alu2.txt"
+# File name for interactive program (with GUI). Edit this to change the netlist being annealed.
+USER_FILE_NAME = "test.txt"
 
 
 def main():

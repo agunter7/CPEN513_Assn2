@@ -227,7 +227,7 @@ def anneal(f_name: str):
     root = Tk()
     root.columnconfigure(0, weight=1)
     root.rowconfigure(0, weight=1)
-    site_length = 20
+    site_length = 7
     routing_canvas = Canvas(root, bg='white', width=grid_width*site_length, height=grid_height*site_length)
     routing_canvas.grid(column=0, row=0, sticky=(N, W, E, S))
     for x in range(grid_width):
@@ -436,7 +436,7 @@ def sa_to_completion(routing_canvas):
         sa_step(routing_canvas)
     end = time.time()
     elapsed = end - start
-    print("Took " + str(elapsed))
+    print("Took " + str(elapsed) + "s")
 
     # Write results to file
     outfile_name = hyperparam_string + str(file_name[:-4]) + ".csv"
